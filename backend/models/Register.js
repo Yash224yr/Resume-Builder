@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const ResumeSchema = new mongoose.Schema({
+const RegisterSchema = new mongoose.Schema({
   name: String,
   email: String,
   username: String,
@@ -11,6 +11,6 @@ const ResumeSchema = new mongoose.Schema({
   },
 });
 
-const ResumeModel = mongoose.model("Userinfo", ResumeSchema);
+const User = mongoose.model("Userinfo", RegisterSchema);
 
-export default ResumeModel;
+export default User;

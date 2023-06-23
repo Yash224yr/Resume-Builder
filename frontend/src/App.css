@@ -16,18 +16,186 @@
   text-decoration: none;
   color: black;
 }
-.login{
-  height: 90vh;
-  background-color: #D8C4B6;
+
+.register {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 90vh;
+  background-color: #f1f1f1;
 }
 
+.register .detail {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+}
 
-.register{
-  height: 90vh;
+.register form {
+  display: flex;
+  flex-direction: column;
+}
+
+.register input {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.register button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.register button:hover {
+  background-color: #0056b3;
+}
+
+.register .already {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.register .already p {
+  margin-right: 5px;
+}
+
+.register .already a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+/* Add animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.register {
+  animation: fadeIn 0.5s ease;
+}
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #ccc;
+}
+
+.popup p {
+  margin-bottom: 10px;
+  text-align: end;
+}
+
+.popup button {
+  padding: 8px 16px;
+}
+
+/* Responsive styles */
+@media (max-width: 600px) {
+  .register .detail {
+    max-width: 100%;
+  }
+}
+
+.login {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 90vh;
+  background-color: #f1f1f1;
+}
+
+.form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.sign-up {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.sign-up p {
+  margin-right: 5px;
+}
+
+.sign-up a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+/* Add animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.login {
+  animation: fadeIn 0.5s ease;
+}
+
+/* Responsive styles */
+@media (max-width: 600px) {
+  .form {
+    max-width: 100%;
+  }
 }
