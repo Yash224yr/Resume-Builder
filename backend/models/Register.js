@@ -5,6 +5,8 @@ const RegisterSchema = new mongoose.Schema({
   email: String,
   username: String,
   password: String,
+  firstname: String,
+  lastname: String,
   role: {
     type: String,
     default: "Visitor",

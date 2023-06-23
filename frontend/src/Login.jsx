@@ -8,18 +8,22 @@ function Login() {
   const [password, setPassword] = useState("")
 
 
-  function handlerlogin(e){
+
+  function handlerlogin(e) {
     e.preventDefault();
-    axios.post("http://localhost:3000/login",{
-      username : username,
-      password : password
-    })
-    .then((response) => {
-      console.log(response.data);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+    axios
+      .post("http://localhost:3000/login", {
+        username: username,
+        password: password,
+      })
+      .then((response) => {
+        console.log(response.data);
+        const token = response.data.token;
+        localStorage.setItem('token', token); // Save the token to localStorage
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   return (

@@ -35,7 +35,7 @@ app.post("/register", (req, res) => {
     .catch((err) => res.json(err));
 });
 
-app.post('/login', async (req, res) => {
+app.post("/login", async (req, res) => {
   const { username, password } = req.body;
 
   try {
@@ -44,18 +44,74 @@ app.post('/login', async (req, res) => {
     if (user) {
       const isMatch = await bcrypt.compare(password, user.password);
       if (isMatch) {
-        res.status(200).json({ message: 'Login successful' });
+        // Generate a JWT token
+        const token = jwt.sign({ username: user.username }, "your-secret-key", {
+          expiresIn: "1h", // Token expiration time
+        });
+
+        // Set the token as a cookie
+        res.cookie("token", token, { httpOnly: true });
+
+        res.status(200).json({ message: "Login successful", token });
       } else {
-        res.status(401).json({ message: 'Invalid username or password' });
+        res.status(401).json({ message: "Invalid username or password" });
       }
     } else {
-      res.status(401).json({ message: 'Invalid username or password' });
+      res.status(401).json({ message: "Invalid username or password" });
     }
   } catch (error) {
-
-    res.status(500).json({ message: 'Internal server error' });
+    res.status(500).json({ message: "Internal server error" });
   }
 });
+
+
+app.post("/update", async (req, res) => {
+  const { firstname, lastname } = req.body;
+  const token = req.headers.authorization?.split(" ")[1]; // Extract token from the request headers
+
+  try {
+    // Verify the token
+    jwt.verify(token, "your-secret-key", async (err, decoded) => {
+      if (err) {
+        return res.status(401).json({ message: "Invalid token" });
+      }
+
+      const { username } = decoded;
+
+      // Find the user
+      const user = await User.findOne({ username });
+
+      if (!user) {
+        return res.status(404).json({ message: "User not found" });
+      }
+
+      // Update the user's firstname and lastname
+      user.firstname = firstname;
+      user.lastname = lastname;
+
+      // Save the updated user
+      await user.save();
+
+      res.status(200).json({ message: "User updated successfully" });
+    });
+  } catch (error) {
+    res.status(500).json({ message: "Internal server error" });
+  }
+});
+
+app.get("/details", async (req, res) => {
+  try {
+    const users = await User.find().select("firstname"); // Retrieve all users from the database
+    res.status(200).json(users);
+  } catch (error) {
+    res.status(500).json({ message: "Internal server error" });
+  }
+});
+
+
+
+
+
 
 
 
