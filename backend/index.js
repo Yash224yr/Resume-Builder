@@ -20,20 +20,29 @@ mongoose.connect("mongodb+srv://yash224yr:FraGod2op@cluster0.9qfibvj.mongodb.net
 
 app.post("/register", (req, res) => {
   const { name, email, password, username } = req.body;
-  bcrypt
-    .hash(password, 10)
-    .then((hash) => {
-      User.create({
-        name,
-        email,
-        username,
-        password: hash,
-      })
-        .then((user) => res.json({ status: "OK" }))
-        .catch((err) => res.json(err));
+  User.findOne({ username }) // Check if username already exists
+    .then((existingUser) => {
+      if (existingUser) {
+        res.json({ error: "Username already exists" });
+      } else {
+        bcrypt
+          .hash(password, 10)
+          .then((hash) => {
+            User.create({
+              name,
+              email,
+              username,
+              password: hash,
+            })
+              .then((user) => res.json({ status: "OK" }))
+              .catch((err) => res.json(err));
+          })
+          .catch((err) => res.json(err));
+      }
     })
     .catch((err) => res.json(err));
 });
+
 
 app.post("/login", async (req, res) => {
   const { username, password } = req.body;
@@ -55,9 +64,12 @@ app.post("/login", async (req, res) => {
         res.status(200).json({ message: "Login successful", token });
       } else {
         res.status(401).json({ message: "Invalid username or password" });
+
       }
     } else {
       res.status(401).json({ message: "Invalid username or password" });
+
+
     }
   } catch (error) {
     res.status(500).json({ message: "Internal server error" });
