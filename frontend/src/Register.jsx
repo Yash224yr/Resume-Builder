@@ -28,7 +28,6 @@ function Register() {
         password: password,
       })
       .then((response) => {
-        console.log(response.data);
         if (response.data.error) {
           console.log(response.data.error)
           setPopMsg(response.data.error);

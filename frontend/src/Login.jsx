@@ -14,6 +14,7 @@ function Login() {
 
 
 
+
   function handlerlogin(e) {
     e.preventDefault();
 
@@ -31,7 +32,23 @@ function Login() {
       .then((response) => {
         console.log(response.data);
         const token = response.data.token;
-        localStorage.setItem('token', token); // Save the token to localStorage
+        localStorage.setItem('token', token);
+        axios
+        .get("http://localhost:3000/user", {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        })
+        .then((response) => {
+          console.log(response.data);
+          const name = response.data[0].name;
+          localStorage.setItem("name", name);
+
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+        
       })
       .catch((err) => {
         setPopMsg("User Not Found")
@@ -40,6 +57,8 @@ function Login() {
       });
   }
 
+
+ 
   return (
     <div className='login'>
         <div className='form'>

@@ -6,7 +6,7 @@
 .header{
   display: flex;
   height: 10vh;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
   background-color: var(--background-light);
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
@@ -31,6 +31,9 @@
   font-size: 1.5rem;
 }
 
+.header .login-done h1{
+  color: black;
+}
 
 .homepage {
   height: 90vh;
