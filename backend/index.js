@@ -93,6 +93,40 @@ app.get('/users', (req, res) => {
 });
 
 
+app.post("/update", async (req, res) => {
+  const { firstname, title} = req.body;
+  const token = req.headers.authorization?.split(" ")[1]; // Extract token from the request headers
+
+  try {
+    // Verify the token
+    jwt.verify(token, "your-secret-key", async (err, decoded) => {
+      if (err) {
+        return res.status(401).json({ message: "Invalid token" });
+      }
+
+      const { username } = decoded;
+
+      // Find the user
+      const user = await User.findOne({ username });
+
+      if (!user) {
+        return res.status(404).json({ message: "User not found" });
+      }
+
+      // Update the user's firstname and lastname
+      user.fullname = firstname;
+      user.title = title
+
+      // Save the updated user
+      await user.save();
+
+      res.status(200).json({ message: "User updated successfully" });
+    });
+  } catch (error) {
+    res.status(500).json({ message: "Internal server error" });
+  }
+});
+
 
 
 

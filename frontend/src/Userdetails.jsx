@@ -82,9 +82,28 @@ function Userdetails() {
     setFont(font)
   }
 
-  function handlerUpdate() {
+    function handlerUpdate() {
+      axios
+        .post(
+          "http://localhost:3000/update",
+          {
+            fullname : fullname,
+            title : title
+          },
+          {
+              headers: {
+                  Authorization: `Bearer ${localStorage.getItem('token')}`, // Include the token in the request headers
+                },
+          }
+        )
+        .then((response) => {
+          console.log(response.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   
-  }
   
 
   return (
