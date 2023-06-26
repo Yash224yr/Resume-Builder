@@ -4,10 +4,17 @@ import Home from './Home';
 import Header from './Header';
 import Login from './Login';
 import Register from './Register';
+import { createContext, useState } from 'react';
+export const Resumecontext = createContext(null)
 
 function App() {
+
+  const [check , setCheck] = useState(false)
+  const [fullname , setFullname] = useState("")
+
   return (
-    <BrowserRouter>
+    <Resumecontext.Provider value={{check, setCheck}} >
+       <BrowserRouter>
       <Header />
       <Routes>
         <Route path='/' element={<Home />} />
@@ -15,6 +22,8 @@ function App() {
         <Route path='/register' element={<Register/>} ></Route>
       </Routes>
     </BrowserRouter>
+    </Resumecontext.Provider>
+   
   );
 }
 

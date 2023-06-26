@@ -1,26 +1,28 @@
 import axios from 'axios'
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Logo from "./images/logo.png"
+import { Resumecontext } from './App'
 
 
 function Login() {
 
-  const [username , setUserName] = useState("")
+  const [username, setUserName] = useState("")
   const [password, setPassword] = useState("")
   const [showPopup, setShowPopup] = useState(false);
   const [popupmsg, setPopMsg] = useState("");
-
-
+  const  {check, setCheck} = useContext(Resumecontext)
 
 
 
   function handlerlogin(e) {
     e.preventDefault();
 
-    if(username==="" || password=== ""){
+    if (username === "" || password === "") {
       setPopMsg("Please fil all the detail")
       setShowPopup(true);
+      setUserName("")
+      setPassword("")
       return;
     }
 
@@ -30,25 +32,29 @@ function Login() {
         password: password,
       })
       .then((response) => {
+        setUserName("")
+        setPassword("")
         console.log(response.data);
         const token = response.data.token;
         localStorage.setItem('token', token);
         axios
-        .get("http://localhost:3000/user", {
+        .get(`http://localhost:3000/users?username=${username}`, {
           headers: {
-            Authorization: `Bearer ${token}`
+            Authorization: `Bearer ${localStorage.getItem("token")}`
           }
         })
         .then((response) => {
           console.log(response.data);
-          const name = response.data[0].name;
+          const name = response.data.name; // Access the name from the response data
           localStorage.setItem("name", name);
-
+          setCheck(!check);
         })
         .catch((err) => {
           console.log(err);
         });
-        
+      
+      
+
       })
       .catch((err) => {
         setPopMsg("User Not Found")
@@ -58,24 +64,24 @@ function Login() {
   }
 
 
- 
+
   return (
     <div className='login'>
-        <div className='form'>
+      <div className='form'>
         <div className='logo'>
           <img src={Logo} alt="" />
         </div>
-            <form onSubmit={handlerlogin}>
-                <input type="text"  value={username} placeholder='Enter Username' onChange={(e)=>{setUserName(e.target.value)}} />
-                <input type="password" placeholder='Enter passwrod' value={password} onChange={(e)=>{setPassword(e.target.value)}} />
-                <button type='submit'>Login</button>
-            </form>
-          <div className='sign-up'>
-            <p>Don't have an account ? </p>
-            <Link to="/register" >Register Here </Link>
-          </div>
+        <form onSubmit={handlerlogin}>
+          <input type="text" value={username} placeholder='Enter Username' onChange={(e) => { setUserName(e.target.value) }} />
+          <input type="password" placeholder='Enter passwrod' value={password} onChange={(e) => { setPassword(e.target.value) }} />
+          <button type='submit'>Login</button>
+        </form>
+        <div className='sign-up'>
+          <p>Don't have an account ? </p>
+          <Link to="/register" >Register Here </Link>
         </div>
-        {showPopup && (
+      </div>
+      {showPopup && (
         <div className='popup'>
           <p>{popupmsg}</p>
           <button onClick={() => setShowPopup(false)}>Close</button>
@@ -84,5 +90,5 @@ function Login() {
     </div>
   )
 }
- 
+
 export default Login

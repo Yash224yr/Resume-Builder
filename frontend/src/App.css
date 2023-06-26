@@ -6,7 +6,7 @@
 .header{
   display: flex;
   height: 10vh;
-  /* justify-content: center; */
+  justify-content: space-between;
   align-items: center;
   background-color: var(--background-light);
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
@@ -34,6 +34,66 @@
 .header .login-done h1{
   color: black;
 }
+
+.header .log-out{
+  display: flex;
+}
+.log-in {
+  display: flex;
+  justify-content: center;
+}
+
+.log-in button a{
+  text-decoration: none;
+  color: white;
+}
+
+.log-in button {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 0 10px;
+  transition: background-color 0.3s ease;
+}
+
+.log-in button:hover {
+  background-color: #555;
+}
+
+.log-in button:nth-child(1) {
+  background-color: #ff9800;
+}
+
+.log-in button:nth-child(1):hover {
+  background-color: #ffac33;
+}
+
+
+.log-out {
+  display: flex;
+  align-items: center;
+}
+
+.log-out h1 {
+  margin-right: 10px;
+}
+
+.log-out button {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.log-out button:hover {
+  background-color: #555;
+}
+
 
 .homepage {
   height: 90vh;
