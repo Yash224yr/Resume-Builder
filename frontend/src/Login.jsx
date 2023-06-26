@@ -2,7 +2,7 @@ import axios from 'axios'
 import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Logo from "./images/logo.png"
-import { Resumecontext } from './App'
+import { ResumeContext } from './App'
 
 
 function Login() {
@@ -11,7 +11,7 @@ function Login() {
   const [password, setPassword] = useState("")
   const [showPopup, setShowPopup] = useState(false);
   const [popupmsg, setPopMsg] = useState("");
-  const  {check, setCheck} = useContext(Resumecontext)
+  const  {check, setCheck} = useContext(ResumeContext)
 
 
 

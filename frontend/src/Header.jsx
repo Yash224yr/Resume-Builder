@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Resumecontext } from './App';
+import { ResumeContext } from './App';
 
 function Header() {
   const [checkLogin, setCheckLogin] = useState(false);
   const [userinfo, setUserinfo] = useState("");
-  const { check, setCheck } = useContext(Resumecontext);
+  const { check, setCheck } = useContext(ResumeContext);
 
   useEffect(() => {
     if (localStorage.getItem("name") || check) {
@@ -29,6 +29,12 @@ function Header() {
         <ul>
           <li>
             <Link to='/'>Home</Link>
+          </li>
+          <li>
+           <Link to="/userdetail" >Userdetail</Link> 
+          </li>
+          <li>
+           <Link to="/resume" >Resume</Link> 
           </li>
         </ul>
       </div>

@@ -1,9 +1,15 @@
-*{
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@1,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playball&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lovers+Quarrel&display=swap');
+
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: sans-serif;
 }
-.header{
+
+.header {
   display: flex;
   height: 10vh;
   justify-content: space-between;
@@ -15,35 +21,36 @@
 }
 
 
-.header .detail ul{
+.header .detail ul {
   list-style: none;
   display: flex;
 }
 
-.header .detail ul li{
+.header .detail ul li {
   margin: 10px;
 }
 
 
-.header .detail ul li a{
+.header .detail ul li a {
   text-decoration: none;
   color: black;
   font-size: 1.5rem;
 }
 
-.header .login-done h1{
+.header .login-done h1 {
   color: black;
 }
 
-.header .log-out{
+.header .log-out {
   display: flex;
 }
+
 .log-in {
   display: flex;
   justify-content: center;
 }
 
-.log-in button a{
+.log-in button a {
   text-decoration: none;
   color: white;
 }
@@ -103,72 +110,71 @@
   padding: 1rem 5rem;
 }
 
-  .homepage .home {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    width: 60%;
-    margin: auto;
-    padding: 0 3rem;
-  }
+.homepage .home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  width: 60%;
+  margin: auto;
+  padding: 0 3rem;
+}
 
-  .homepage .home .logo{
-    margin-bottom: 2rem;
-  }
-  
-  .homepage .home .logo img{
-    width: 30%;
-  }
+.homepage .home .logo {
+  margin-bottom: 2rem;
+}
 
-  .homepage .home h1 {
-    font-size: 2.2rem;
-    margin: 1rem 0;
-    color: #333;
-    text-align: start
-  }
-  
-  .homepage .home p {
-    font-size: 1.2rem;
-    color: #666;
-    margin: 1rem 0;
-    text-align: justify;
-  }
+.homepage .home .logo img {
+  width: 30%;
+}
 
-  .homepage .home button {
-    background-color: #1976d2;
-    color: #fff;
-    border: none;
-    padding: 1rem 2rem;
-    font-size: 1.2rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    width: 30%;
-    border-radius: 20px;
-    margin: 1rem 0;
-  }
-  
-  .homepage .home button:hover {
-    background-color: #0056b3;
-  }
-  
-  .homepage .home button a {
-    display: flex;
-    align-items: center;
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
-  }
-  
-  .homepage .home button a:hover {
-    text-decoration: none;
-  }
-  
-  
-  
-  .homepage .home button:hover {
-    background-color: #0056b3;
-  }
+.homepage .home h1 {
+  font-size: 2.2rem;
+  margin: 1rem 0;
+  color: #333;
+  text-align: start
+}
+
+.homepage .home p {
+  font-size: 1.2rem;
+  color: #666;
+  margin: 1rem 0;
+  text-align: justify;
+}
+
+.homepage .home button {
+  background-color: #1976d2;
+  color: #fff;
+  border: none;
+  padding: 1rem;
+  font-size: 1.2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 25%;
+  border-radius: 20px;
+  margin: 1rem 0;
+}
+
+.homepage .home button:hover {
+  background-color: #0056b3;
+}
+
+.homepage .home button a {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.homepage .home button a:hover {
+  text-decoration: none;
+}
+
+.homepage .home button:hover {
+  background-color: #0056b3;
+}
 
 .homepage .images {
   background-image: url("./images/hero-home-page-banner.jpg");
@@ -184,6 +190,7 @@
   0% {
     opacity: 0;
   }
+
   100% {
     opacity: 1;
   }
@@ -207,13 +214,16 @@
   max-width: 400px;
   width: 100%;
 }
-.register .detail .logo , .login .logo {
+
+.register .detail .logo,
+.login .logo {
   display: flex;
   justify-content: center;
   margin-bottom: 2rem;
 }
 
-.register .detail .logo img, .login .logo img{
+.register .detail .logo img,
+.login .logo img {
   width: 40%;
 }
 
@@ -265,6 +275,7 @@
     opacity: 0;
     transform: translateY(-20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -367,6 +378,7 @@
     opacity: 0;
     transform: translateY(-20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -383,3 +395,271 @@
     max-width: 100%;
   }
 }
+
+.resume {
+  display: flex;
+}
+
+.resume .resume-edit {
+  width: 30%;
+  position: fixed;
+  left: 0;
+  top: 12;
+  height: 90vh;
+  overflow-y: auto;
+  background-color: #9376e0;
+  color: #fff;
+  padding: 20px;
+}
+
+.resume .resume-template {
+  width: 70%;
+  margin-left: 30%;
+  /* Adjust the margin to match the width of resume-edit */
+  background-color: #f4f4f4;
+}
+
+.userdetails {
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #f4f4f4;
+  overflow: auto;
+  flex-direction: column;
+}
+
+.userdetails form {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.userdetails input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.userdetails h2 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: #333;
+  font-size: 18px;
+}
+
+.userdetails input[type='submit'] {
+  background-color: #9376e0;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.userdetails input[type='submit']:hover {
+  background-color: #7c61cd;
+}
+
+/* Animation Effects */
+.userdetails {
+  opacity: 0;
+  animation: fade-in 0.5s ease-out forwards;
+}
+
+.userdetails .color-box {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 1rem;
+}
+
+.userdetails .color {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.userdetails .font-box {
+  margin-bottom: 1rem;
+}
+
+.userdetails .font-box h4 {
+  color: black;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.userdetails .font-box ul {
+  display: flex;
+  list-style: none;
+  flex-wrap: wrap;
+}
+
+.userdetails .font-box ul li {
+  color: black;
+  margin-left: 20px;
+  cursor: pointer;
+}
+
+.userdetails .font-box ul li:hover {
+  color: blue;
+}
+/* Add external CSS file or style tag in HTML file */
+.userdetails .save {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.userdetails .save button {
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+
+.userdetails .save button:nth-child(1) {
+  background-color: #4CAF50;
+}
+
+.userdetails .save button:nth-child(1) {
+  background-color: #4CAF50; /* Green background color for the first button */
+}
+
+.userdetails .save button:nth-child(2) {
+  background-color: #3F51B5;
+}
+
+.userdetails .save button:hover{
+  background-color: #45a049; 
+}
+
+.userdetails .save button:nth-child(2):hover {
+  background-color: #5c6bc0; /* Hover background color for the second button */
+}
+
+
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.template {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.template .all-detail {
+  margin: 1rem 0;
+  width: 80%;
+  background-color: lightgrey;
+}
+
+.template .all-detail .info .name-title h1 {
+  text-align: center;
+  margin: 1rem 0 0.5rem 0;
+  font-weight: bolder;
+}
+
+.template .all-detail .info .name-title h3 {
+  text-align: center;
+  font-weight: 300;
+  margin-bottom: 1rem;
+}
+
+.template .all-detail .contact {
+  display: flex;
+  justify-content: center;
+  padding: 0 1rem;
+  margin-bottom: 1rem;
+  position: relative;
+}
+.template .all-detail .contact p{
+  margin: 0 1rem;
+}
+
+.template .line {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 30%;
+  background-color: black;
+  right: 0;
+  bottom: -100%;
+}
+
+.template .about{
+  padding: 0 0.5rem;
+  margin: 2rem 0 0 0;
+}
+
+.template .about p{
+  width: 90%;
+  margin: auto;
+  text-align: justify;
+}
+
+
+.template .education {
+  margin: 1rem 0 1rem 0;
+  padding: 0 0.5rem;
+  position: relative;
+}
+
+.template .education .education-title h1 {
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  width: 160px;
+  text-align: center;
+  margin: auto;
+  white-space: nowrap;
+  padding-bottom: 13px;
+  position: relative;
+}
+
+.template .education .education-title h1:before {
+  background-color: #c50000;
+  content: '';
+  display: block;
+  height: 3px;
+  width: 75px;
+  margin-bottom: 5px;
+}
+
+.template .education .education-title h1:after {
+  background-color: #c50000;
+  content: '';
+  display: block;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  width: 75px;
+  margin-bottom: 0.25em;
+}
+
+.template .education .degree{
+  line-height: 1.5rem;
+}
+
