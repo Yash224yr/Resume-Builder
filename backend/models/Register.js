@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const RegisterSchema = new mongoose.Schema({
   name: String,
@@ -8,9 +8,9 @@ const RegisterSchema = new mongoose.Schema({
   fullname: String,
   title: String,
   city: String,
-  useremail : String,
+  useremail: String,
   number: String,
-  skilllist : [String],
+  skillist: [String],
   degree: String,
   school: String,
   graduationYear: String,
@@ -22,11 +22,10 @@ const RegisterSchema = new mongoose.Schema({
   font: String,
   role: {
     type: String,
-    default: "Visitor",
+    default: 'Visitor',
   },
 });
 
-
-const User = mongoose.model("Userinfo", RegisterSchema);
+const User = mongoose.model('User', RegisterSchema);
 
 export default User;

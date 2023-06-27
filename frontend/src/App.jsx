@@ -26,7 +26,7 @@ function App() {
   const [color, setColor] = useState("")
   const [font , setFont] = useState("")
   const [skill, setSkill] = useState("")
-  const [skillist , setSkilllist] = useState([])
+  const [skillist , setSkillist] = useState([])
 
   return (
     <ResumeContext.Provider
@@ -59,7 +59,7 @@ function App() {
         color, setColor,
         font , setFont,
         skill , setSkill,
-        skillist , setSkilllist,
+        skillist , setSkillist,
       }}
 
     >

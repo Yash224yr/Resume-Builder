@@ -7,6 +7,11 @@ import DeleteIcon from '@mui/icons-material/Delete';
 function Userdetails() {
 
 
+  const [edit, setEdit] = useState(false)
+  const [index, setIndex] = useState("")
+
+
+
 
 
   const [colors, setColors] = useState([
@@ -76,7 +81,7 @@ function Userdetails() {
     color, setColor,
     font, setFont,
     skill, setSkill,
-    skillist, setSkilllist,
+    skillist, setSkillist,
   } = useContext(ResumeContext);
 
 
@@ -107,7 +112,7 @@ function Userdetails() {
           about: about,
           color: color,
           font: font,
-          skillist: skillist
+          skillist: skillist,
         },
         {
           headers: {
@@ -121,6 +126,47 @@ function Userdetails() {
       .catch((err) => {
         console.log(err);
       });
+  }
+
+  
+  function handlersave(e) {
+    e.preventDefault()
+
+    if (skill.length > 0 &&  edit === false) {
+      setSkillist([...skillist, skill])
+      setSkill("")
+    }
+    else {
+
+    
+      const updatedSkillList = skillist.map((list, idx) => {
+        if (idx === index) {
+          return skill;
+        }
+        return list;
+      });
+      setSkillist(updatedSkillList);
+      setEdit(!edit)
+      setSkill("")
+    }
+
+  }
+
+
+
+  function handlerEdit(list, index) {
+    setSkill(list)
+    setEdit(!edit)
+    setIndex(index)
+  }
+
+  function handlerdelete(index){
+
+    setSkillist(
+      skillist.filter((list , ind)=>{
+        return ind !== index
+      })
+    )
   }
 
 
@@ -150,54 +196,14 @@ function Userdetails() {
         setAbout(response.data.about)
         setColor(response.data.color)
         setFont(response.data.font)
+        setSkillist(response.data.skillist)
       })
       .catch((err) => {
         console.log(err);
       });
   }
 
-  const [edit, setEdit] = useState(false)
-  const [index, setIndex] = useState("")
-
-  function handlersave(e) {
-    e.preventDefault()
-
-    if (skill.length > 0 &&  edit === false) {
-      setSkilllist([...skillist, skill])
-      setSkill("")
-    }
-    else {
-
-    
-      const updatedSkillList = skillist.map((list, idx) => {
-        if (idx === index) {
-          return skill;
-        }
-        return list;
-      });
-      setSkilllist(updatedSkillList);
-      setEdit(!edit)
-      setSkill("")
-    }
-
-  }
-
-
-
-  function handlerEdit(list, index) {
-    setSkill(list)
-    setEdit(!edit)
-    setIndex(index)
-  }
-
-  function handlerdelete(index){
-
-    setSkilllist(
-      skillist.filter((list , ind)=>{
-        return ind !== index
-      })
-    )
-  }
+ 
 
 
 
@@ -255,8 +261,9 @@ function Userdetails() {
               return (
                 <li key={index}>
                   {list}
-                   <EditIcon onClick={() => { handlerEdit(list, index) }} ></EditIcon> 
-                   <DeleteIcon onClick={()=>{handlerdelete(index)}}></DeleteIcon>
+                  <div>  <EditIcon onClick={() => { handlerEdit(list, index) }} ></EditIcon> 
+                   <DeleteIcon onClick={()=>{handlerdelete(index)}}></DeleteIcon></div>
+                
                   
                 </li>
               );

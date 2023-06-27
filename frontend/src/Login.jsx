@@ -11,10 +11,10 @@ function Login() {
   const [password, setPassword] = useState("")
   const [showPopup, setShowPopup] = useState(false);
   const [popupmsg, setPopMsg] = useState("");
-  const  {check, setCheck} = useContext(ResumeContext)
+  const { check, setCheck } = useContext(ResumeContext)
 
-  useEffect(()=>{
-  },[])
+  useEffect(() => {
+  }, [])
 
 
   function handlerlogin(e) {
@@ -40,24 +40,23 @@ function Login() {
         const token = response.data.token;
         localStorage.setItem('token', token);
         axios
-        .get(`http://localhost:3000/users?username=${username}`, {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`
-          }
-        })
-        .then((response) => {
-          console.log(response.data);
-          const name = response.data.name; // Access the name from the response data
-          localStorage.setItem("name", name);
-    localStorage.setItem("username", username)
+          .get(`http://localhost:3000/users?username=${username}`, {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`
+            }
+          })
+          .then((response) => {
+            console.log(response.data);
+            const name = response.data.name; // Access the name from the response data
+            localStorage.setItem("name", name);
+            localStorage.setItem("username", username)
+            setCheck(!check);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
 
-          setCheck(!check);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-      
-      
+
 
       })
       .catch((err) => {
