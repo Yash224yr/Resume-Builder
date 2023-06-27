@@ -128,7 +128,7 @@ app.post("/update", async (req, res) => {
       user.about = about;
       user.color = color;
       user.font = font;
-
+      user.skilllist = skilllist;
 
 
 

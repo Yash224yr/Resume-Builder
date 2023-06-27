@@ -10,6 +10,7 @@ const RegisterSchema = new mongoose.Schema({
   city: String,
   useremail : String,
   number: String,
+  skilllist : [String],
   degree: String,
   school: String,
   graduationYear: String,

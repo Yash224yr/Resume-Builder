@@ -1,8 +1,12 @@
 import React, { useContext, useState } from 'react';
 import { ResumeContext } from './App';
 import axios from 'axios';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 function Userdetails() {
+
+
 
 
   const [colors, setColors] = useState([
@@ -71,7 +75,8 @@ function Userdetails() {
     about, setAbout,
     color, setColor,
     font, setFont,
-    skill, setSkill
+    skill, setSkill,
+    skillist, setSkilllist,
   } = useContext(ResumeContext);
 
 
@@ -102,6 +107,7 @@ function Userdetails() {
           about: about,
           color: color,
           font: font,
+          skillist: skillist
         },
         {
           headers: {
@@ -150,8 +156,51 @@ function Userdetails() {
       });
   }
 
+  const [edit, setEdit] = useState(false)
+  const [index, setIndex] = useState("")
 
-  
+  function handlersave(e) {
+    e.preventDefault()
+
+    if (skill.length > 0 &&  edit === false) {
+      setSkilllist([...skillist, skill])
+      setSkill("")
+    }
+    else {
+
+    
+      const updatedSkillList = skillist.map((list, idx) => {
+        if (idx === index) {
+          return skill;
+        }
+        return list;
+      });
+      setSkilllist(updatedSkillList);
+      setEdit(!edit)
+      setSkill("")
+    }
+
+  }
+
+
+
+  function handlerEdit(list, index) {
+    setSkill(list)
+    setEdit(!edit)
+    setIndex(index)
+  }
+
+  function handlerdelete(index){
+
+    setSkilllist(
+      skillist.filter((list , ind)=>{
+        return ind !== index
+      })
+    )
+  }
+
+
+
 
 
   return (
@@ -196,8 +245,26 @@ function Userdetails() {
         <h2>Skills</h2>
 
         <input type="text" placeholder='Enter about Skills' value={skill} onChange={(e) => { setSkill(e.target.value) }} />
+        <button className='save-btn' onClick={(e) => { handlersave(e) }} >Save</button>
+        <ul className='skillset' >
+          {
 
-     
+            skillist &&
+
+            skillist.map((list, index) => {
+              return (
+                <li key={index}>
+                  {list}
+                   <EditIcon onClick={() => { handlerEdit(list, index) }} ></EditIcon> 
+                   <DeleteIcon onClick={()=>{handlerdelete(index)}}></DeleteIcon>
+                  
+                </li>
+              );
+            })}
+        </ul>
+
+
+
 
 
         <h2>Education</h2>
