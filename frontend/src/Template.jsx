@@ -2,9 +2,10 @@ import React, { useContext } from 'react';
 import { ResumeContext } from './App';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
+import DownloadIcon from '@mui/icons-material/Download';
 
 function Template() {
-  const { fullname, title, useremail, number, city, about, skill, degree, school, graduationYear, jobTitle } = useContext(ResumeContext);
+  const { fullname, title, useremail, number, city, about, skill, degree, school, graduationYear, jobTitle , font , color} = useContext(ResumeContext);
 
   function downloadPDF() {
     const capture = document.querySelector('.all-detail');
@@ -28,7 +29,7 @@ function Template() {
       <div className='all-detail'>
         <div className='info'>
           <div className='name-title'>
-            <h1>{fullname}</h1>
+          <h1 style={{ fontFamily: font, color: color ? color : "black" }}>{fullname}</h1>
             <h3>{title}</h3>
           </div>
           <div className='contact'>
@@ -61,8 +62,8 @@ function Template() {
           )}
         </div>
       </div>
-      <div>
-        <button onClick={downloadPDF}>Download as PDF</button>
+      <div className='download' >
+        <button onClick={downloadPDF}><DownloadIcon/></button>
       </div>
     </div>
   );

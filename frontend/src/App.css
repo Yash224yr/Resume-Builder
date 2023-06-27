@@ -679,3 +679,25 @@
   min-height: 80px;
 }
 
+
+
+
+
+
+
+
+.template .download{
+  position: absolute;
+    right: 5%;
+    bottom: 5%;
+}
+
+.template .download button{
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.5s ease-in-out;
+}
+
+

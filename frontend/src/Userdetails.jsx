@@ -144,15 +144,14 @@ function Userdetails() {
         setAbout(response.data.about)
         setColor(response.data.color)
         setFont(response.data.font)
-
-
       })
       .catch((err) => {
         console.log(err);
       });
-
   }
 
+
+  
 
 
   return (
