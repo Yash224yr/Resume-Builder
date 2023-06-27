@@ -507,6 +507,7 @@
 .userdetails .font-box ul li:hover {
   color: blue;
 }
+
 /* Add external CSS file or style tag in HTML file */
 .userdetails .save {
   display: flex;
@@ -533,19 +534,21 @@
 }
 
 .userdetails .save button:nth-child(1) {
-  background-color: #4CAF50; /* Green background color for the first button */
+  background-color: #4CAF50;
+  /* Green background color for the first button */
 }
 
 .userdetails .save button:nth-child(2) {
   background-color: #3F51B5;
 }
 
-.userdetails .save button:hover{
-  background-color: #45a049; 
+.userdetails .save button:hover {
+  background-color: #45a049;
 }
 
 .userdetails .save button:nth-child(2):hover {
-  background-color: #5c6bc0; /* Hover background color for the second button */
+  background-color: #5c6bc0;
+  /* Hover background color for the second button */
 }
 
 
@@ -593,7 +596,8 @@
   margin-bottom: 1rem;
   position: relative;
 }
-.template .all-detail .contact p{
+
+.template .all-detail .contact p {
   margin: 0 1rem;
 }
 
@@ -607,12 +611,12 @@
   bottom: -100%;
 }
 
-.template .about{
+.template .about {
   padding: 0 0.5rem;
   margin: 2rem 0 0 0;
 }
 
-.template .about p{
+.template .about p {
   width: 90%;
   margin: auto;
   text-align: justify;
@@ -625,7 +629,8 @@
   position: relative;
 }
 
-.template .education .education-title h1 {
+.template .education .education-title h1,
+.template .experience h1 {
   font-size: 26px;
   font-weight: 700;
   letter-spacing: 1px;
@@ -638,7 +643,8 @@
   position: relative;
 }
 
-.template .education .education-title h1:before {
+.template .education .education-title h1:before,
+.template .experience h1::before {
   background-color: #c50000;
   content: '';
   display: block;
@@ -647,7 +653,8 @@
   margin-bottom: 5px;
 }
 
-.template .education .education-title h1:after {
+.template .education .education-title h1:after,
+.template .experience h1::after {
   background-color: #c50000;
   content: '';
   display: block;
@@ -659,7 +666,6 @@
   margin-bottom: 0.25em;
 }
 
-.template .education .degree{
+.template .education .degree {
   line-height: 1.5rem;
 }
-

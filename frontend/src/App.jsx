@@ -13,7 +13,7 @@ function App() {
   const [check, setCheck] = useState(false);
   const [fullname, setFullname] = useState('');
   const [title, setTitle] = useState('');
-  const [email, setEmail] = useState('');
+  const [useremail, setuserEmail] = useState('');
   const [number, setNumber] = useState('');
   const [degree, setDegree] = useState('');
   const [school, setSchool] = useState('');
@@ -35,8 +35,8 @@ function App() {
         setFullname,
         title,
         setTitle,
-        email,
-        setEmail,
+        useremail,
+        setuserEmail,
         city,
         setCity,
         number,

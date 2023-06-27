@@ -8,6 +8,7 @@ const RegisterSchema = new mongoose.Schema({
   fullname: String,
   title: String,
   city: String,
+  useremail : String,
   number: String,
   degree: String,
   school: String,

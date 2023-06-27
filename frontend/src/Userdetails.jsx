@@ -50,8 +50,8 @@ function Userdetails() {
     setFullname,
     title,
     setTitle,
-    email,
-    setEmail,
+    useremail,
+    setuserEmail,
     city,
     setCity,
     number,
@@ -82,36 +82,37 @@ function Userdetails() {
     setFont(font)
   }
 
-    function handlerUpdate() {
-      axios
-        .post(
-          "http://localhost:3000/update",
-          {
-            fullname : fullname,
-            title : title,
-            number : number,
-            city : city,
+  function handlerUpdate() {
+    axios
+      .post(
+        "http://localhost:3000/update",
+        {
+          fullname: fullname,
+          title: title,
+          number: number,
+          city: city,
+          email : useremail,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`, // Include the token in the request headers
           },
-          {
-              headers: {
-                  Authorization: `Bearer ${localStorage.getItem('token')}`, // Include the token in the request headers
-                },
-          }
-        )
-        .then((response) => {
-          console.log(response.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
+        }
+      )
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 
 
 
 
-    function handlergetdata() {
-      const username = localStorage.getItem("username")
-      axios
+  function handlergetdata() {
+    const username = localStorage.getItem("username")
+    axios
       .get(`http://localhost:3000/getdata?username=${username}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -127,10 +128,10 @@ function Userdetails() {
       .catch((err) => {
         console.log(err);
       });
-    
-    }
-  
-  
+
+  }
+
+
 
   return (
     <div className="userdetails">
@@ -164,12 +165,14 @@ function Userdetails() {
 
 
         <input type="text" placeholder="Enter Your Title" value={title} onChange={(e) => setTitle(e.target.value)} />
-        <input type="email" placeholder="Enter Your Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+        <input type="email" placeholder="Enter Your Email" value={useremail} onChange={(e) => setuserEmail(e.target.value)} />
         <input type="number" placeholder="Enter Your Number" value={number} onChange={(e) => setNumber(e.target.value)} />
         <input type="text" placeholder="Enter Your Location" value={city} onChange={(e) => setCity(e.target.value)} />
 
         <h2>About</h2>
         <input type="text" placeholder='Enter about yourself' value={about} onChange={(e) => { setAbout(e.target.value) }} />
+          
+
 
         <h2>Education</h2>
         <input type="text" placeholder="Enter Your Degree" value={degree} onChange={(e) => setDegree(e.target.value)} />
@@ -183,8 +186,8 @@ function Userdetails() {
 
       </form>
       <div className='save'>
-        <button onClick={()=>{handlergetdata()}} >Load Online</button>
-        <button onClick={()=>{handlerUpdate()}} >Save Online</button>
+        <button onClick={() => { handlergetdata() }} >Load Online</button>
+        <button onClick={() => { handlerUpdate() }} >Save Online</button>
       </div>
     </div>
   );

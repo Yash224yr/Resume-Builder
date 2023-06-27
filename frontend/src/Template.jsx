@@ -9,8 +9,8 @@ function Template() {
         setFullname,
         title,
         setTitle,
-        email,
-        setEmail,
+        useremail,
+        setuserEmail,
         city,
         setCity,
         number,
@@ -46,7 +46,7 @@ function Template() {
                     </div>
 
                     <div className='contact' >
-                        <p>{email}</p>
+                        <p>{useremail}</p>
                         <p>{number}</p>
                         <p>{city}</p>
                         <div className='line'></div>
@@ -57,13 +57,16 @@ function Template() {
 
                     <div className='education'>
                         <div className='education-title'>
-                            <h1>Education</h1>
+                            <h1 >Education</h1>
                         </div>
                         <div className='degree'>
                             <h3>{degree}</h3>
                             <h3>{school}</h3>
                             <h3>{graduationYear}</h3>
                         </div>
+                    </div>
+                    <div className='experience' >  
+                        <h1>Experince</h1>
                     </div>
                 </div>
             </div>

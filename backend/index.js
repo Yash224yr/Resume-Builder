@@ -94,7 +94,7 @@ app.get('/users', (req, res) => {
 
 
 app.post("/update", async (req, res) => {
-  const { fullname, title , number , city} = req.body;
+  const { fullname, title , number , city , useremail} = req.body;
   const token = req.headers.authorization?.split(" ")[1]; // Extract token from the request headers
 
   try {
@@ -118,6 +118,7 @@ app.post("/update", async (req, res) => {
       user.title = title;
       user.number = number;
       user.city = city;
+      user.useremail = useremail;
 
       // Save the updated user
       await user.save();
@@ -140,6 +141,7 @@ app.get('/getdata', (req, res) => {
       }
       const userData = {
         title: user.title,
+        useremail: user.useremail,
         fullname: user.fullname,
         city: user.city,
         number: user.number,
