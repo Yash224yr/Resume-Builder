@@ -71,6 +71,7 @@ function Userdetails() {
     about, setAbout,
     color, setColor,
     font, setFont,
+    skill, setSkill
   } = useContext(ResumeContext);
 
 
@@ -91,7 +92,16 @@ function Userdetails() {
           title: title,
           number: number,
           city: city,
-          email : useremail,
+          useremail: useremail,
+          degree: degree,
+          school: school,
+          graduationYear: graduationYear,
+          jobTitle: jobTitle,
+          company: company,
+          jobDescription: jobDescription,
+          about: about,
+          color: color,
+          font: font,
         },
         {
           headers: {
@@ -124,6 +134,18 @@ function Userdetails() {
         setFullname(response.data.fullname)
         setNumber(response.data.number)
         setCity(response.data.city)
+        setuserEmail(response.data.useremail)
+        setDegree(response.data.degree)
+        setSchool(response.data.school)
+        setGraduationYear(response.data.graduationYear)
+        setJobTitle(response.data.jobTitle)
+        setCompany(response.data.company)
+        setJobDescription(response.data.jobDescription)
+        setAbout(response.data.about)
+        setColor(response.data.color)
+        setFont(response.data.font)
+
+
       })
       .catch((err) => {
         console.log(err);
@@ -171,7 +193,12 @@ function Userdetails() {
 
         <h2>About</h2>
         <input type="text" placeholder='Enter about yourself' value={about} onChange={(e) => { setAbout(e.target.value) }} />
-          
+
+        <h2>Skills</h2>
+
+        <input type="text" placeholder='Enter about Skills' value={skill} onChange={(e) => { setSkill(e.target.value) }} />
+
+     
 
 
         <h2>Education</h2>

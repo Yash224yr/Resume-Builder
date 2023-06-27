@@ -79,7 +79,7 @@ app.post("/login", async (req, res) => {
 app.get('/users', (req, res) => {
   const { username } = req.query;
   User.findOne({ username })
-    .select("name" )
+    .select("name")
     .then(user => {
       if (!user) {
         return res.status(404).json({ error: 'User not found' });
@@ -94,7 +94,7 @@ app.get('/users', (req, res) => {
 
 
 app.post("/update", async (req, res) => {
-  const { fullname, title , number , city , useremail} = req.body;
+  const { fullname, title, number, city, useremail, degree, school, graduationYear, jobTitle, company, jobDescription, about , color , font } = req.body;
   const token = req.headers.authorization?.split(" ")[1]; // Extract token from the request headers
 
   try {
@@ -119,6 +119,18 @@ app.post("/update", async (req, res) => {
       user.number = number;
       user.city = city;
       user.useremail = useremail;
+      user.degree = degree;
+      user.school = school,
+        user.graduationYear = graduationYear;
+      user.jobTitle = jobTitle;
+      user.company = company;
+      user.jobDescription = jobDescription;
+      user.about = about;
+      user.color = color;
+      user.font = font;
+
+
+
 
       // Save the updated user
       await user.save();
@@ -134,17 +146,17 @@ app.post("/update", async (req, res) => {
 app.get('/getdata', (req, res) => {
   const { username } = req.query;
   User.findOne({ username })
-    .select('title fullname city number degree school graduationYear jobTitle company jobDescription about color font') // Add additional fields
+    .select('title fullname city number useremail degree school graduationYear jobTitle company jobDescription about color font') // Add additional fields
     .then(user => {
       if (!user) {
         return res.status(404).json({ error: 'User not found' });
       }
       const userData = {
         title: user.title,
-        useremail: user.useremail,
         fullname: user.fullname,
         city: user.city,
         number: user.number,
+        useremail: user.useremail,
         degree: user.degree,
         school: user.school,
         graduationYear: user.graduationYear,

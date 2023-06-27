@@ -25,6 +25,7 @@ function App() {
   const [about, setAbout] = useState("")
   const [color, setColor] = useState("")
   const [font , setFont] = useState("")
+  const [skill, setSkill] = useState("")
 
   return (
     <ResumeContext.Provider
@@ -55,7 +56,8 @@ function App() {
         setJobDescription,
         about , setAbout,
         color, setColor,
-        font , setFont
+        font , setFont,
+        skill , setSkill
       }}
 
     >
