@@ -128,17 +128,17 @@ function Userdetails() {
       });
   }
 
-  
+
   function handlersave(e) {
     e.preventDefault()
 
-    if (skill.length > 0 &&  edit === false) {
+    if (skill.length > 0 && edit === false) {
       setSkillist([...skillist, skill])
       setSkill("")
     }
     else {
 
-    
+
       const updatedSkillList = skillist.map((list, idx) => {
         if (idx === index) {
           return skill;
@@ -160,10 +160,10 @@ function Userdetails() {
     setIndex(index)
   }
 
-  function handlerdelete(index){
+  function handlerdelete(index) {
 
     setSkillist(
-      skillist.filter((list , ind)=>{
+      skillist.filter((list, ind) => {
         return ind !== index
       })
     )
@@ -203,7 +203,7 @@ function Userdetails() {
       });
   }
 
- 
+
 
 
 
@@ -261,10 +261,8 @@ function Userdetails() {
               return (
                 <li key={index}>
                   {list}
-                  <div>  <EditIcon onClick={() => { handlerEdit(list, index) }} ></EditIcon> 
-                   <DeleteIcon onClick={()=>{handlerdelete(index)}}></DeleteIcon></div>
-                
-                  
+                  <div>  <EditIcon onClick={() => { handlerEdit(list, index) }} ></EditIcon>
+                    <DeleteIcon onClick={() => { handlerdelete(index) }}></DeleteIcon></div>
                 </li>
               );
             })}

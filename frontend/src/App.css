@@ -675,7 +675,7 @@
 
 
 .template .education .education-title h1,
-.template .experience h1 , .template .skill h1 {
+.template .experience h1 , .template .skill h1 , .template .projects h1{
   font-size: 26px;
   font-weight: 700;
   letter-spacing: 1px;
@@ -689,7 +689,7 @@
 }
 
 .template .education .education-title h1:before,
-.template .experience h1::before , .template .skill h1::before {
+.template .experience h1::before , .template .skill h1::before , .template .projects h1::before{
   background-color: #c50000;
   content: '';
   display: block;
@@ -699,7 +699,7 @@
 }
 
 .template .education .education-title h1:after,
-.template .experience h1::after , .template .skill h1::after {
+.template .experience h1::after , .template .skill h1::after , .template .projects h1::after {
   background-color: #c50000;
   content: '';
   display: block;
@@ -754,6 +754,11 @@
   align-items: center;
 }
 
+
+.template .projects{
+  padding: 0 0.5rem;
+  min-height: 80px;
+}
 
 
 

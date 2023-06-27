@@ -5,7 +5,7 @@ import jsPDF from 'jspdf';
 import DownloadIcon from '@mui/icons-material/Download';
 
 function Template() {
-  const { fullname, title, useremail, number, city, about, skill,  skillist,  degree, school, graduationYear, jobTitle , font , color } = useContext(ResumeContext);
+  const { fullname, title, useremail, number, city, about, skill, skillist, degree, school, graduationYear, jobTitle, font, color } = useContext(ResumeContext);
 
   function downloadPDF() {
     const capture = document.querySelector('.all-detail');
@@ -29,7 +29,7 @@ function Template() {
       <div className='all-detail'>
         <div className='info'>
           <div className='name-title'>
-          <h1 style={{ fontFamily: font, color: color ? color : "black" }}>{fullname}</h1>
+            <h1 style={{ fontFamily: font, color: color ? color : "black" }}>{fullname}</h1>
             <h3>{title}</h3>
           </div>
           <div className='contact'>
@@ -44,15 +44,15 @@ function Template() {
           <div className='skill'>
             <h1>Skills</h1>
             <ul>
-            {
-              skillist.map((list , index)=>{
+              {
+                skillist.map((list, index) => {
                   return (
                     <li key={index} >{list}</li>
                   )
-              })
-            }
+                })
+              }
             </ul>
-            
+
           </div>
           <div className='education'>
             <div className='education-title'>
@@ -69,10 +69,14 @@ function Template() {
               <h1>Experience</h1>
             </div>
           )}
+          <div className='projects' >
+              <h1>Projects</h1>
+          </div>
         </div>
+
       </div>
       <div className='download' >
-        <button onClick={downloadPDF}><DownloadIcon/></button>
+        <button onClick={downloadPDF}><DownloadIcon /></button>
       </div>
     </div>
   );

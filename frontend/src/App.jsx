@@ -60,6 +60,7 @@ function App() {
         font , setFont,
         skill , setSkill,
         skillist , setSkillist,
+        
       }}
 
     >
