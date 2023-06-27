@@ -88,7 +88,9 @@ function Userdetails() {
           "http://localhost:3000/update",
           {
             fullname : fullname,
-            title : title
+            title : title,
+            number : number,
+            city : city,
           },
           {
               headers: {
@@ -102,6 +104,30 @@ function Userdetails() {
         .catch((err) => {
           console.log(err);
         });
+    }
+
+
+
+
+    function handlergetdata() {
+      const username = localStorage.getItem("username")
+      axios
+      .get(`http://localhost:3000/getdata?username=${username}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      .then((response) => {
+        console.log(response.data);
+        setTitle(response.data.title)
+        setFullname(response.data.fullname)
+        setNumber(response.data.number)
+        setCity(response.data.city)
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    
     }
   
   
@@ -157,7 +183,7 @@ function Userdetails() {
 
       </form>
       <div className='save'>
-        <button>Load Online</button>
+        <button onClick={()=>{handlergetdata()}} >Load Online</button>
         <button onClick={()=>{handlerUpdate()}} >Save Online</button>
       </div>
     </div>

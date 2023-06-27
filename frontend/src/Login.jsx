@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Logo from "./images/logo.png"
 import { ResumeContext } from './App'
@@ -13,6 +13,8 @@ function Login() {
   const [popupmsg, setPopMsg] = useState("");
   const  {check, setCheck} = useContext(ResumeContext)
 
+  useEffect(()=>{
+  },[])
 
 
   function handlerlogin(e) {
@@ -47,6 +49,8 @@ function Login() {
           console.log(response.data);
           const name = response.data.name; // Access the name from the response data
           localStorage.setItem("name", name);
+    localStorage.setItem("username", username)
+
           setCheck(!check);
         })
         .catch((err) => {

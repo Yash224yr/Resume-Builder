@@ -79,7 +79,7 @@ app.post("/login", async (req, res) => {
 app.get('/users', (req, res) => {
   const { username } = req.query;
   User.findOne({ username })
-    .select("name")
+    .select("name" )
     .then(user => {
       if (!user) {
         return res.status(404).json({ error: 'User not found' });
@@ -94,7 +94,7 @@ app.get('/users', (req, res) => {
 
 
 app.post("/update", async (req, res) => {
-  const { firstname, title} = req.body;
+  const { fullname, title , number , city} = req.body;
   const token = req.headers.authorization?.split(" ")[1]; // Extract token from the request headers
 
   try {
@@ -114,8 +114,10 @@ app.post("/update", async (req, res) => {
       }
 
       // Update the user's firstname and lastname
-      user.fullname = firstname;
-      user.title = title
+      user.fullname = fullname;
+      user.title = title;
+      user.number = number;
+      user.city = city;
 
       // Save the updated user
       await user.save();
@@ -126,6 +128,40 @@ app.post("/update", async (req, res) => {
     res.status(500).json({ message: "Internal server error" });
   }
 });
+
+
+app.get('/getdata', (req, res) => {
+  const { username } = req.query;
+  User.findOne({ username })
+    .select('title fullname city number degree school graduationYear jobTitle company jobDescription about color font') // Add additional fields
+    .then(user => {
+      if (!user) {
+        return res.status(404).json({ error: 'User not found' });
+      }
+      const userData = {
+        title: user.title,
+        fullname: user.fullname,
+        city: user.city,
+        number: user.number,
+        degree: user.degree,
+        school: user.school,
+        graduationYear: user.graduationYear,
+        jobTitle: user.jobTitle,
+        company: user.company,
+        jobDescription: user.jobDescription,
+        about: user.about,
+        color: user.color,
+        font: user.font
+      };
+      res.status(200).json(userData);
+    })
+    .catch(error => {
+      res.status(500).json({ error: 'Internal server error' });
+    });
+});
+
+
+
 
 
 
