@@ -248,8 +248,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 90vh;
   background-color: #f1f1f1;
+  padding: 2rem 0;
 }
 
 .register .detail {

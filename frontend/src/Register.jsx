@@ -50,6 +50,7 @@ function Register() {
 
   return (
     <div className='register'>
+      
       <div className='detail'>
         <div className='logo'>
           <img src={Logo} alt="" />
