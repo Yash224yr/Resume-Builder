@@ -11,6 +11,7 @@ const RegisterSchema = new mongoose.Schema({
   useremail: String,
   number: String,
   skillist: [String],
+  projectlist : [String],
   degree: String,
   school: String,
   graduationYear: String,

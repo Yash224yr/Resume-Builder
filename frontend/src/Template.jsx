@@ -5,7 +5,7 @@ import jsPDF from 'jspdf';
 import DownloadIcon from '@mui/icons-material/Download';
 
 function Template() {
-  const { fullname, title, useremail, number, city, about, skill, skillist, degree, school, graduationYear, jobTitle, font, color } = useContext(ResumeContext);
+  const { fullname, title, useremail, number, city, about, skill, skillist, degree, school, graduationYear, jobTitle, font, color, projectlist } = useContext(ResumeContext);
 
   function downloadPDF() {
     const capture = document.querySelector('.all-detail');
@@ -71,6 +71,18 @@ function Template() {
           )}
           <div className='projects' >
               <h1>Projects</h1>
+                {
+                  projectlist.map((list , index)=>{
+                      const value = list.split(":")
+                      return(
+                        <div className='template-project' key={index} >
+                            <h2>{value[0]}</h2>
+                            <p>{value[1]}</p>
+                            <a href={value[2]}>Visit</a>
+                        </div>
+                      )
+                  })
+                }
           </div>
         </div>
 

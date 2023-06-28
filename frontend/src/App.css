@@ -595,6 +595,45 @@
   cursor: pointer;
 }
 
+.project-detail{
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  width: 80%;
+}
+
+.project-detail h1{
+  font-size: 1rem;
+  color: black;
+  width: 100%;
+}
+
+.project-detail p{
+  font-size: 0.8rem;
+  color: black;
+  width: 100%;
+}
+
+.project-detail .project-link{
+  display: flex;
+  align-items: center;
+}
+
+.project-detail .project-link a{
+  margin-left: 5px;
+}
+
+
+.project-detail .project-edit svg:first-of-type{
+  color: black;
+}
+
+.project-detail .project-edit svg:last-of-type{
+  color: red;
+}
+
+
+
 
 @keyframes fade-in {
   0% {

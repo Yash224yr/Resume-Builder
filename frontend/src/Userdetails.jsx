@@ -3,13 +3,18 @@ import { ResumeContext } from './App';
 import axios from 'axios';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
+import LaunchIcon from '@mui/icons-material/Launch';
 
 function Userdetails() {
 
 
   const [edit, setEdit] = useState(false)
   const [index, setIndex] = useState("")
-
+  const [projectdetail, setProjectdetail] = useState("")
+  const [projectname, setProjectname] = useState("")
+  const [projectlink, setProjectlink] = useState("")
+  const [editproject, seteditproject] = useState(false)
+  const [projectindex, setProjectIndex] = useState("")
 
 
 
@@ -82,6 +87,7 @@ function Userdetails() {
     font, setFont,
     skill, setSkill,
     skillist, setSkillist,
+    projectlist, setProjectlist,
   } = useContext(ResumeContext);
 
 
@@ -113,6 +119,7 @@ function Userdetails() {
           color: color,
           font: font,
           skillist: skillist,
+          projectlist: projectlist,
         },
         {
           headers: {
@@ -153,7 +160,6 @@ function Userdetails() {
   }
 
 
-
   function handlerEdit(list, index) {
     setSkill(list)
     setEdit(!edit)
@@ -168,6 +174,46 @@ function Userdetails() {
       })
     )
   }
+
+  function handlersaveproject(e) {
+    e.preventDefault();
+
+    if (projectname.length > 0 && editproject === false) {
+      setProjectlist([...projectlist, projectname + " : " + projectdetail + " : " + projectlink]);
+      setProjectname("");
+      setProjectdetail("");
+      setProjectlink("");
+    } else {
+      projectlist[projectindex] = projectname + " : " + projectdetail + " : " + projectlink
+      setProjectname("");
+      setProjectdetail("");
+      setProjectlink("");
+      seteditproject(!editproject);
+    }
+  }
+
+  function handlerprojectedit(value1, value2, value3, index) {
+    setProjectname(value1);
+    setProjectdetail(value2);
+    setProjectlink(value3);
+    setProjectIndex(index);
+    seteditproject(!editproject);
+  }
+
+
+
+  function handlerprojectdelete(index) {
+    setProjectlist(
+      projectlist.filter((list, ind) => {
+        return ind !== index
+      })
+    )
+  }
+
+
+
+
+
 
 
 
@@ -197,6 +243,7 @@ function Userdetails() {
         setColor(response.data.color)
         setFont(response.data.font)
         setSkillist(response.data.skillist)
+        setProjectlist(response.data.projectlist)
       })
       .catch((err) => {
         console.log(err);
@@ -272,6 +319,7 @@ function Userdetails() {
 
 
 
+
         <h2>Education</h2>
         <input type="text" placeholder="Enter Your Degree" value={degree} onChange={(e) => setDegree(e.target.value)} />
         <input type="text" placeholder="Enter Your School/University" value={school} onChange={(e) => setSchool(e.target.value)} />
@@ -281,6 +329,36 @@ function Userdetails() {
         <input type="text" placeholder="Enter Your Job Title" value={jobTitle} onChange={(e) => setJobTitle(e.target.value)} />
         <input type="text" placeholder="Enter Your Company" value={company} onChange={(e) => setCompany(e.target.value)} />
         <input type="text" placeholder="Enter Your Job Description" value={jobDescription} onChange={(e) => setJobDescription(e.target.value)} />
+
+        <h2>Projects</h2>
+
+        <input type="text" placeholder='Enter Project Name' value={projectname} onChange={(e) => { setProjectname(e.target.value) }} />
+        <input type="text" placeholder='Enter Project Detail ' value={projectdetail} onChange={(e) => { setProjectdetail(e.target.value) }} />
+        <input type="url" placeholder='Enter Project Link' value={projectlink} onChange={(e) => { setProjectlink(e.target.value) }} />
+        <button className='save-btn' onClick={(e) => { handlersaveproject(e) }} >Save</button>
+
+        {
+          projectlist.map((list, index) => {
+            const value = list.split(":")
+            return (
+              <div className='project-detail' key={index} >
+                <h1>{value[0] + ":"}</h1>
+                <div className='project-link' >
+                  <p>{value[1]}</p>
+                  <a href={value[2]} target='_blank' ><LaunchIcon /></a>
+                </div>
+                <div className='project-edit' >
+                  <EditIcon onClick={() => { handlerprojectedit(value[0], value[1], value[2], index) }} ></EditIcon>
+                  <DeleteIcon onClick={() => { handlerprojectdelete(index) }} ></DeleteIcon>
+                </div>
+
+              </div>
+            )
+          })
+        }
+
+
+
 
       </form>
       <div className='save'>

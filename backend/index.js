@@ -94,7 +94,7 @@ app.get('/users', (req, res) => {
 
 
 app.post("/update", async (req, res) => {
-  const { fullname, title, number, city, useremail, degree, school, graduationYear, jobTitle, company, jobDescription, about, color, font, skillist } = req.body;
+  const { fullname, title, number, city, useremail, degree, school, graduationYear, jobTitle, company, jobDescription, about, color, font, skillist , projectlist} = req.body;
   const token = req.headers.authorization?.split(" ")[1]; // Extract token from the request headers
 
   try {
@@ -129,6 +129,7 @@ app.post("/update", async (req, res) => {
       user.color = color;
       user.font = font;
       user.skillist = skillist;
+      user.projectlist = projectlist;
 
 
 
@@ -146,7 +147,7 @@ app.post("/update", async (req, res) => {
 app.get('/getdata', (req, res) => {
   const { username } = req.query;
   User.findOne({ username })
-    .select('title fullname city number useremail degree school graduationYear jobTitle company jobDescription about color font skillist') // Add additional fields
+    .select('title fullname city number useremail degree school graduationYear jobTitle company jobDescription about color font skillist projectlist') // Add additional fields
     .then(user => {
       if (!user) {
         return res.status(404).json({ error: 'User not found' });
@@ -166,7 +167,8 @@ app.get('/getdata', (req, res) => {
         about: user.about,
         color: user.color,
         font: user.font,
-        skillist : user.skillist
+        skillist : user.skillist,
+        projectlist : user.projectlist
       };
       res.status(200).json(userData);
     })
