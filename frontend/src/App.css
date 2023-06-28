@@ -142,23 +142,74 @@
   text-align: justify;
 }
 
-.homepage .home button {
-  background-color: #1976d2;
-  color: #fff;
+.homepage button {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  background: #183153;
+  font-family: "Montserrat", sans-serif;
+  box-shadow: 0px 6px 24px 0px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
   border: none;
-  padding: 1rem;
-  font-size: 1.2rem;
-  text-align: center;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
   width: 25%;
-  border-radius: 20px;
-  margin: 1rem 0;
+  margin: 20px auto;
+
 }
 
-.homepage .home button:hover {
-  background-color: #0056b3;
+.homepage button:after {
+  content: " ";
+  width: 0%;
+  height: 100%;
+  background: #FFD401;
+  position: absolute;
+  transition: all 0.4s ease-in-out;
+  right: 0;
 }
+
+.homepage button:hover::after {
+  right: auto;
+  left: 0;
+  width: 100%;
+}
+
+.homepage button span {
+  text-align: center;
+  text-decoration: none;
+  width: 100%;
+  padding: 18px 0px;
+  color: #fff;
+  font-size: 1.125em;
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  z-index: 20;
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.homepage button:hover span {
+  color: #183153;
+  animation: scaleUp 0.3s ease-in-out;
+}
+
+@keyframes scaleUp {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(0.95);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
 
 .homepage .home button a {
   display: flex;
@@ -168,13 +219,8 @@
   font-weight: bold;
 }
 
-.homepage .home button a:hover {
-  text-decoration: none;
-}
 
-.homepage .home button:hover {
-  background-color: #0056b3;
-}
+
 
 .homepage .images {
   background-image: url("./images/hero-home-page-banner.jpg");
@@ -551,7 +597,7 @@
   /* Hover background color for the second button */
 }
 
-.userdetails .skillset{
+.userdetails .skillset {
   list-style: none;
   margin: 1rem 0;
   display: flex;
@@ -559,7 +605,7 @@
   flex-wrap: wrap;
 }
 
-.userdetails .skillset li{
+.userdetails .skillset li {
   color: black;
   width: 30%;
   margin: 10px 5px;
@@ -573,7 +619,7 @@
   border: 1px solid #ccc;
   background-color: #f5f5f5;
   text-align: center;
-  
+
 }
 
 .skillset li .edit-icon {
@@ -586,51 +632,50 @@
   cursor: pointer;
 }
 
-.skillset li svg:last-of-type{
+.skillset li svg:last-of-type {
   color: red;
   cursor: pointer;
 }
 
-.skillset li svg:first-of-type{
+.skillset li svg:first-of-type {
   cursor: pointer;
 }
 
-.project-detail{
+.project-detail {
   display: flex;
   flex-direction: column;
   margin-top: 10px;
   width: 80%;
 }
 
-.project-detail h1{
+.project-detail h1 {
   font-size: 1rem;
   color: black;
-  width: 100%
-  ;
+  width: 100%;
 }
 
-.project-detail p{
+.project-detail p {
   font-size: 0.8rem;
   color: black;
   width: 100%;
 }
 
-.project-detail .project-link{
+.project-detail .project-link {
   display: flex;
   align-items: center;
 }
 
-.project-detail .project-link a{
+.project-detail .project-link a {
   margin-left: 5px;
 }
 
 
-.project-detail .project-edit svg:first-of-type{
+.project-detail .project-edit svg:first-of-type {
   color: black;
   cursor: pointer;
 }
 
-.project-detail .project-edit svg:last-of-type{
+.project-detail .project-edit svg:last-of-type {
   color: red;
   cursor: pointer;
 }
@@ -719,7 +764,9 @@
 
 
 .template .education .education-title h1,
-.template .experience h1 , .template .skill h1 , .template .projects h1{
+.template .experience h1,
+.template .skill h1,
+.template .projects h1 {
   font-size: 26px;
   font-weight: 700;
   letter-spacing: 1px;
@@ -733,7 +780,9 @@
 }
 
 .template .education .education-title h1:before,
-.template .experience h1::before , .template .skill h1::before , .template .projects h1::before{
+.template .experience h1::before,
+.template .skill h1::before,
+.template .projects h1::before {
   background-color: #c50000;
   content: '';
   display: block;
@@ -743,7 +792,9 @@
 }
 
 .template .education .education-title h1:after,
-.template .experience h1::after , .template .skill h1::after , .template .projects h1::after {
+.template .experience h1::after,
+.template .skill h1::after,
+.template .projects h1::after {
   background-color: #c50000;
   content: '';
   display: block;
@@ -759,11 +810,11 @@
   line-height: 1.5rem;
 }
 
-.template .skill{
+.template .skill {
   padding: 0 0.5rem;
 }
 
-.save-btn{
+.save-btn {
 
   background-color: #ff4081;
   color: white;
@@ -774,17 +825,17 @@
   cursor: pointer;
 }
 
-.save-btn:hover{
-    background-color: #e91e63;
+.save-btn:hover {
+  background-color: #e91e63;
 
 }
 
 
-.template .skill ul{
+.template .skill ul {
   display: flex;
   flex-wrap: wrap;
   list-style: none;
-  margin:  1rem 0;
+  margin: 1rem 0;
 }
 
 .template .skill ul li {
@@ -799,7 +850,7 @@
 }
 
 
-.template .projects{
+.template .projects {
   padding: 0 0.5rem;
   min-height: 80px;
 }
@@ -809,36 +860,21 @@
 
 
 
-.template .download{
-  position: absolute;
-    right: 5%;
-    bottom: 5%;
-}
-
-.template .download button{
-  height: 50px;
-  width: 50px;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: 0.5s ease-in-out;
-}
-
-
 .template .template-project {
   display: flex;
   align-items: center;
   margin-top: 5px;
 }
 
-.template .template-project h2{
+.template .template-project h2 {
   font-size: 1rem;
   font-weight: bold;
 }
-.template .template-project p{
+
+.template .template-project p {
   font-size: 1rem;
 }
-.template .template-project svg{
+
+.template .template-project svg {
   font-size: 0.9rem;
 }
-
-

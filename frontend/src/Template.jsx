@@ -1,29 +1,11 @@
 import React, { useContext } from 'react';
 import { ResumeContext } from './App';
-import html2canvas from 'html2canvas';
-import jsPDF from 'jspdf';
-import DownloadIcon from '@mui/icons-material/Download';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 
 function Template() {
   const { fullname, title, useremail, number, city, about, skill, skillist, degree, school, graduationYear, jobTitle, font, color, projectlist } = useContext(ResumeContext);
 
-  function downloadPDF() {
-    const capture = document.querySelector('.all-detail');
 
-    html2canvas(capture, { dpi: 300, scale: 2 })
-      .then((canvas) => {
-        const imgData = canvas.toDataURL('image/png');
-        const doc = new jsPDF('p', 'mm', 'a4');
-        const imgProps = doc.getImageProperties(imgData);
-        const aspectRatio = imgProps.width / imgProps.height;
-        const width = doc.internal.pageSize.getWidth() - 20;
-        const height = width / aspectRatio;
-
-        doc.addImage(imgData, 'PNG', 10, 10, width, height);
-        doc.save('resume.pdf');
-      });
-  }
 
   return (
     <div className='template'>
@@ -87,9 +69,6 @@ function Template() {
           </div>
         </div>
 
-      </div>
-      <div className='download' >
-        <button onClick={downloadPDF}><DownloadIcon /></button>
       </div>
     </div>
   );
