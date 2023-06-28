@@ -1,6 +1,9 @@
 import React, { useContext } from 'react';
 import { ResumeContext } from './App';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
+import CallIcon from '@mui/icons-material/Call';
+import EmailIcon from '@mui/icons-material/Email';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 function Template() {
   const { fullname, title, useremail, number, city, about, skill, skillist, degree, school, graduationYear, jobTitle, font, color, projectlist } = useContext(ResumeContext);
@@ -16,9 +19,19 @@ function Template() {
             <h3>{title}</h3>
           </div>
           <div className='contact'>
-            <p>{useremail}</p>
-            <p>{number}</p>
-            <p>{city}</p>
+            {
+              useremail &&
+              <p> <EmailIcon></EmailIcon> {useremail}</p>
+            }
+            {
+              number &&
+              <p> <CallIcon /> {number}</p>
+            }
+            {
+              city && 
+            <p><LocationOnIcon></LocationOnIcon>{city}</p>
+
+            }
             <div className='line'></div>
           </div>
           <div className='about'>
@@ -53,19 +66,19 @@ function Template() {
             </div>
           )}
           <div className='projects' >
-              <h1>Projects</h1>
-                {
-                  projectlist.map((list , index)=>{
-                      const value = list.split(":")
-                      return(
-                        <div className='template-project' key={index} >
-                            <h2>{value[0] }</h2>
-                            <p>{"," + value[1]}</p>
-                            <a href={value[2]}  target='_blank'></a><OpenInNewIcon/>
-                        </div>
-                      )
-                  })
-                }
+            <h1>Projects</h1>
+            {
+              projectlist.map((list, index) => {
+                const value = list.split(":")
+                return (
+                  <div className='template-project' key={index} >
+                    <h2>{value[0]}</h2>
+                    <p>{"," + value[1]}</p>
+                    <a href={value[2]} target='_blank'><OpenInNewIcon /></a>
+                  </div>
+                )
+              })
+            }
           </div>
         </div>
 

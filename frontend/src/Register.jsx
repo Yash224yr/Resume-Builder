@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Logo from "./images/logo.png"
 
+
 function Register() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');

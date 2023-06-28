@@ -1,12 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@1,300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Playball&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lovers+Quarrel&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 .header {
@@ -600,7 +601,7 @@
   /* Hover background color for the second button */
 }
 
-.userdetails .skillset {
+.userdetails .skillset , .userdetails .interest-list{
   list-style: none;
   margin: 1rem 0;
   display: flex;
@@ -608,7 +609,7 @@
   flex-wrap: wrap;
 }
 
-.userdetails .skillset li {
+.userdetails .skillset li , .userdetails .interest-list li{
   color: black;
   width: 30%;
   margin: 10px 5px;
@@ -616,7 +617,7 @@
 
 
 
-.skillset li {
+.skillset li , .userdetails li {
   margin-bottom: 10px;
   padding: 8px;
   border: 1px solid #ccc;
@@ -625,22 +626,22 @@
 
 }
 
-.skillset li .edit-icon {
+.skillset li .edit-icon , .interest-list li .edit-icon {
   margin-right: 5px;
   cursor: pointer;
 }
 
-.skillset li .delete-icon {
+.skillset li .delete-icon , .interest-list li .delete-icon {
   margin-left: 5px;
   cursor: pointer;
 }
 
-.skillset li svg:last-of-type {
+.skillset li svg:last-of-type ,  .interest-list li svg:last-of-type {
   color: red;
   cursor: pointer;
 }
 
-.skillset li svg:first-of-type {
+.skillset li svg:first-of-type , .interest-list li svg:first-of-type {
   cursor: pointer;
 }
 
@@ -734,6 +735,14 @@
 
 .template .all-detail .contact p {
   margin: 0 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.template .all-detail .contact p svg{
+  font-size: 1.2rem;
+  margin-right: 5px;
+  font-weight: bolder;
 }
 
 .template .line {

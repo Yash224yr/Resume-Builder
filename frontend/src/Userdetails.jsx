@@ -15,6 +15,7 @@ function Userdetails() {
   const [projectlink, setProjectlink] = useState("")
   const [editproject, seteditproject] = useState(false)
   const [projectindex, setProjectIndex] = useState("")
+  const [interest, setInterest] = useState("")
 
 
 
@@ -88,6 +89,7 @@ function Userdetails() {
     skill, setSkill,
     skillist, setSkillist,
     projectlist, setProjectlist,
+    interestlist, setInterestList,
   } = useContext(ResumeContext);
 
 
@@ -211,6 +213,13 @@ function Userdetails() {
   }
 
 
+  function handlersaveinterest(e) {
+    e.preventDefault()
+    setInterestList([...interestlist, interest])
+    setInterest("")
+  }
+
+  
 
 
 
@@ -356,6 +365,24 @@ function Userdetails() {
             )
           })
         }
+
+        <h2>Interest</h2>
+        <input type="text" placeholder='Enter Your Interest' value={interest} onChange={(e) => { setInterest(e.target.value) }} />
+        <button className='save-btn' onClick={(e) => { handlersaveinterest(e) }} >Save</button>
+
+        <ul className='interest-list'>
+          {
+            interestlist.map((list, index) => {
+              return (
+                <li key={index} >{list}
+                  <div>  <EditIcon onClick={() => { handlerinterestedit(list, index) }} ></EditIcon>
+                    <DeleteIcon onClick={() => { handlerinterestdelete(index) }}></DeleteIcon></div>
+                </li>
+
+              )
+            })
+          }
+        </ul>
 
 
 
