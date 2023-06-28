@@ -605,7 +605,8 @@
 .project-detail h1{
   font-size: 1rem;
   color: black;
-  width: 100%;
+  width: 100%
+  ;
 }
 
 .project-detail p{
@@ -626,11 +627,15 @@
 
 .project-detail .project-edit svg:first-of-type{
   color: black;
+  cursor: pointer;
 }
 
 .project-detail .project-edit svg:last-of-type{
   color: red;
+  cursor: pointer;
 }
+
+
 
 
 
@@ -816,6 +821,24 @@
   border-radius: 50%;
   cursor: pointer;
   transition: 0.5s ease-in-out;
+}
+
+
+.template .template-project {
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.template .template-project h2{
+  font-size: 1rem;
+  font-weight: bold;
+}
+.template .template-project p{
+  font-size: 1rem;
+}
+.template .template-project svg{
+  font-size: 0.9rem;
 }
 
 

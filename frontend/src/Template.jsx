@@ -3,6 +3,7 @@ import { ResumeContext } from './App';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import DownloadIcon from '@mui/icons-material/Download';
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 
 function Template() {
   const { fullname, title, useremail, number, city, about, skill, skillist, degree, school, graduationYear, jobTitle, font, color, projectlist } = useContext(ResumeContext);
@@ -76,9 +77,9 @@ function Template() {
                       const value = list.split(":")
                       return(
                         <div className='template-project' key={index} >
-                            <h2>{value[0]}</h2>
-                            <p>{value[1]}</p>
-                            <a href={value[2]}>Visit</a>
+                            <h2>{value[0] }</h2>
+                            <p>{"," + value[1]}</p>
+                            <a href={value[2]}  target='_blank'></a><OpenInNewIcon/>
                         </div>
                       )
                   })
