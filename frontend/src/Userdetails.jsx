@@ -16,6 +16,8 @@ function Userdetails() {
   const [editproject, seteditproject] = useState(false)
   const [projectindex, setProjectIndex] = useState("")
   const [interest, setInterest] = useState("")
+  const [interestedit , setInterestEdit] = useState(false)
+  const [interestindex , setInterestIndex] = useState("")
 
 
 
@@ -122,6 +124,7 @@ function Userdetails() {
           font: font,
           skillist: skillist,
           projectlist: projectlist,
+          interestlist : interestlist,
         },
         {
           headers: {
@@ -215,13 +218,40 @@ function Userdetails() {
 
   function handlersaveinterest(e) {
     e.preventDefault()
-    setInterestList([...interestlist, interest])
-    setInterest("")
+    if (interest.length > 0 &&  interestedit === false) {
+      setInterestList([...interestlist, interest])
+     setInterest("")
+    } else {
+
+
+      const updatedinterestList = interestlist.map((list, idx) => {
+        if (idx === interestindex) {
+          return interest;
+        }
+        return list;
+      });
+      setInterestList(updatedinterestList)
+      setInterest("")
+      setInterestEdit(!interestedit)
+    }
+  }
+
+  function handlerinterestedit(list , index){
+    setInterest(list)
+    setInterestEdit(!interestedit)
+    setInterestIndex(index)
+  }
+
+
+  function handlerinterestdelete(index){
+    setInterestList(
+      interestlist.filter((list , ind)=>{
+          return ind !== index
+      })
+    )
   }
 
   
-
-
 
 
 
@@ -253,6 +283,7 @@ function Userdetails() {
         setFont(response.data.font)
         setSkillist(response.data.skillist)
         setProjectlist(response.data.projectlist)
+        setInterestList(response.data.interestlist)
       })
       .catch((err) => {
         console.log(err);

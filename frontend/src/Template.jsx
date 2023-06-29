@@ -6,7 +6,7 @@ import EmailIcon from '@mui/icons-material/Email';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 function Template() {
-  const { fullname, title, useremail, number, city, about, skill, skillist, degree, school, graduationYear, jobTitle, font, color, projectlist } = useContext(ResumeContext);
+  const { fullname, title, useremail, number, city, about, skill, skillist, degree, school, graduationYear, jobTitle, font, color, projectlist , interestlist } = useContext(ResumeContext);
 
 
 
@@ -80,6 +80,21 @@ function Template() {
               })
             }
           </div>
+
+            <div className='interest' >
+                  <h1>Interest</h1>
+                  <ul>
+                  {
+                    interestlist.map((list , index)=>{
+                        return (
+                          <li key={index} > {list}</li>
+                        )
+                    })
+                  }
+                  </ul>
+                  
+            </div>
+
         </div>
 
       </div>
