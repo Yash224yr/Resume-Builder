@@ -295,11 +295,14 @@ function Userdetails() {
       });
   }
 
-  const [show, setShow] = useState(false)
+  const [show, setShow] = useState("")
 
-  function handlershow() {
-    setShow(!show)
+  function handlershow(section) {
+    setShow(prevShow => (prevShow === section ? "" : section)); // Toggle the section visibility
   }
+
+
+
 
 
 
@@ -310,52 +313,30 @@ function Userdetails() {
     <div className="userdetails">
       <form>
         <input type="text" placeholder="Enter Your Full Name" value={fullname} onChange={(e) => setFullname(e.target.value)} />
-        <div className='color-box'>
 
-          {colors.map((color, index) => (
-            <div
-              key={index}
-              className='color'
-              style={{ backgroundColor: color.id }}
-              onClick={() => { handlersetColor(color.id) }}
-            ></div>
-
-          ))}
-
+        <h2 onClick={() => { handlershow("info") }} className={show === "info" ? "active" : ""} > Info  {show === "info" ? (<KeyboardArrowUpIcon></KeyboardArrowUpIcon>) : (<KeyboardArrowDownIcon></KeyboardArrowDownIcon>)}</h2>
+        <div className='info' style={{ display: show === "info" ? "block" : "none" }}  >
+          <input type="text" placeholder="Enter Your Title" value={title} onChange={(e) => setTitle(e.target.value)} />
+          <input type="email" placeholder="Enter Your Email" value={useremail} onChange={(e) => setuserEmail(e.target.value)} />
+          <input type="number" placeholder="Enter Your Number" value={number} onChange={(e) => setNumber(e.target.value)} />
+          <input type="text" placeholder="Enter Your Location" value={city} onChange={(e) => setCity(e.target.value)} />
 
         </div>
 
-        <div className='font-box'>
-          <h4>Select Font</h4>
-          <ul>
-            {fonts.map((font, index) => (
-              <li key={index} onClick={() => { handlersetfont(font.id) }}>
-                {font.id}
-              </li>
-            ))}
-          </ul>
-        </div>
+        <h2 onClick={() => { handlershow("about") }} className={show === "about" ? "active" : ""} > About {show === "about" ? (<KeyboardArrowUpIcon></KeyboardArrowUpIcon>) : (<KeyboardArrowDownIcon></KeyboardArrowDownIcon>)}</h2>
 
-
-        <input type="text" placeholder="Enter Your Title" value={title} onChange={(e) => setTitle(e.target.value)} />
-        <input type="email" placeholder="Enter Your Email" value={useremail} onChange={(e) => setuserEmail(e.target.value)} />
-        <input type="number" placeholder="Enter Your Number" value={number} onChange={(e) => setNumber(e.target.value)} />
-        <input type="text" placeholder="Enter Your Location" value={city} onChange={(e) => setCity(e.target.value)} />
-
-        <h2 onClick={(handlershow)} > About {!show ? (<KeyboardArrowUpIcon></KeyboardArrowUpIcon>) : (<KeyboardArrowDownIcon></KeyboardArrowDownIcon>)}</h2>
-        <div className='about' style={{ display: !show ? "block" : "none" }} >
+        <div className='about' style={{ display: show === "about" ? "block" : "none" }} >
           <input type="text" placeholder='Enter about yourself' value={about} onChange={(e) => { setAbout(e.target.value) }} />
         </div>
 
-        <h2 onClick={(handlershow)} >Skills {!show ? (<KeyboardArrowUpIcon></KeyboardArrowUpIcon>) : (<KeyboardArrowDownIcon></KeyboardArrowDownIcon>)}</h2>
-        <div className='skill' style={{ display: !show ? "block" : "none" }}>
+        <h2 onClick={() => { handlershow("skill") }} className={show === "skill" ? "active" : ""} >Skills {show === "skill" ? (<KeyboardArrowUpIcon></KeyboardArrowUpIcon>) : (<KeyboardArrowDownIcon></KeyboardArrowDownIcon>)}</h2>
+        <div className='skill' style={{ display: show === "skill" ? "block" : "none" }}>
 
 
           <input type="text" placeholder='Enter about Skills' value={skill} onChange={(e) => { setSkill(e.target.value) }} />
           <button className='save-btn' onClick={(e) => { handlersave(e) }} >Save</button>
           <ul className='skillset'  >
             {
-
               skillist &&
 
               skillist.map((list, index) => {
@@ -376,60 +357,74 @@ function Userdetails() {
 
 
 
-        <h2>Education</h2>
-        <input type="text" placeholder="Enter Your Degree" value={degree} onChange={(e) => setDegree(e.target.value)} />
-        <input type="text" placeholder="Enter Your School/University" value={school} onChange={(e) => setSchool(e.target.value)} />
-        <input type="text" placeholder="Enter Your Graduation Year" value={graduationYear} onChange={(e) => setGraduationYear(e.target.value)} />
+        <h2 onClick={() => { handlershow("education") }} className={show === "education" ? "active" : ""} >Education {show === "education" ? (<KeyboardArrowUpIcon></KeyboardArrowUpIcon>) : (<KeyboardArrowDownIcon></KeyboardArrowDownIcon>)}</h2>
 
-        <h2>Experience</h2>
-        <input type="text" placeholder="Enter Your Job Title" value={jobTitle} onChange={(e) => setJobTitle(e.target.value)} />
-        <input type="text" placeholder="Enter Your Company" value={company} onChange={(e) => setCompany(e.target.value)} />
-        <input type="text" placeholder="Enter Your Job Description" value={jobDescription} onChange={(e) => setJobDescription(e.target.value)} />
+        <div className='education' style={{ display: show === "education" ? "block" : "none" }} >
+          <input type="text" placeholder="Enter Your Degree" value={degree} onChange={(e) => setDegree(e.target.value)} />
+          <input type="text" placeholder="Enter Your School/University" value={school} onChange={(e) => setSchool(e.target.value)} />
+          <input type="text" placeholder="Enter Your Graduation Year" value={graduationYear} onChange={(e) => setGraduationYear(e.target.value)} />
 
-        <h2>Projects</h2>
+        </div>
 
-        <input type="text" placeholder='Enter Project Name' value={projectname} onChange={(e) => { setProjectname(e.target.value) }} />
-        <input type="text" placeholder='Enter Project Detail ' value={projectdetail} onChange={(e) => { setProjectdetail(e.target.value) }} />
-        <input type="url" placeholder='Enter Project Link' value={projectlink} onChange={(e) => { setProjectlink(e.target.value) }} />
-        <button className='save-btn' onClick={(e) => { handlersaveproject(e) }} >Save</button>
+        <h2 onClick={() => { handlershow("experience") }} className={show === "experience" ? "active" : ""} >Experience {show === "experience" ? (<KeyboardArrowUpIcon></KeyboardArrowUpIcon>) : (<KeyboardArrowDownIcon></KeyboardArrowDownIcon>)}</h2>
 
-        {
-          projectlist.map((list, index) => {
-            const value = list.split(":")
-            return (
-              <div className='project-detail' key={index} >
-                <h1>{value[0] + ":"}</h1>
-                <div className='project-link' >
-                  <p>{value[1]}</p>
-                  <a href={value[2]} target='_blank' ><LaunchIcon /></a>
-                </div>
-                <div className='project-edit' >
-                  <EditIcon onClick={() => { handlerprojectedit(value[0], value[1], value[2], index) }} ></EditIcon>
-                  <DeleteIcon onClick={() => { handlerprojectdelete(index) }} ></DeleteIcon>
-                </div>
+        <div className='experience' style={{ display: show === "experience" ? "block" : "none" }}  >
+          <input type="text" placeholder="Enter Your Job Title" value={jobTitle} onChange={(e) => setJobTitle(e.target.value)} />
+          <input type="text" placeholder="Enter Your Company" value={company} onChange={(e) => setCompany(e.target.value)} />
+          <input type="text" placeholder="Enter Your Job Description" value={jobDescription} onChange={(e) => setJobDescription(e.target.value)} />
 
-              </div>
-            )
-          })
-        }
+        </div>
 
-        <h2>Interest</h2>
-        <input type="text" placeholder='Enter Your Interest' value={interest} onChange={(e) => { setInterest(e.target.value) }} />
-        <button className='save-btn' onClick={(e) => { handlersaveinterest(e) }} >Save</button>
+        <h2 onClick={() => { handlershow("project") }} className={show === "project" ? "active" : ""} >Project {show === "project" ? (<KeyboardArrowUpIcon></KeyboardArrowUpIcon>) : (<KeyboardArrowDownIcon></KeyboardArrowDownIcon>)}</h2>
 
-        <ul className='interest-list'>
+        <div className='project' style={{ display: show === "project" ? "block" : "none" }}  >
+          <input type="text" placeholder='Enter Project Name' value={projectname} onChange={(e) => { setProjectname(e.target.value) }} />
+          <input type="text" placeholder='Enter Project Detail ' value={projectdetail} onChange={(e) => { setProjectdetail(e.target.value) }} />
+          <input type="url" placeholder='Enter Project Link' value={projectlink} onChange={(e) => { setProjectlink(e.target.value) }} />
+          <button className='save-btn' onClick={(e) => { handlersaveproject(e) }} >Save</button>
+
           {
-            interestlist.map((list, index) => {
+            projectlist.map((list, index) => {
+              const value = list.split(":")
               return (
-                <li key={index} >{list}
-                  <div>  <EditIcon onClick={() => { handlerinterestedit(list, index) }} ></EditIcon>
-                    <DeleteIcon onClick={() => { handlerinterestdelete(index) }}></DeleteIcon></div>
-                </li>
+                <div className='project-detail' key={index} >
+                  <h1>{value[0] + ":"}</h1>
+                  <div className='project-link' >
+                    <p>{value[1]}</p>
+                    <a href={value[2]} target='_blank' ><LaunchIcon /></a>
+                  </div>
+                  <div className='project-edit' >
+                    <EditIcon onClick={() => { handlerprojectedit(value[0], value[1], value[2], index) }} ></EditIcon>
+                    <DeleteIcon onClick={() => { handlerprojectdelete(index) }} ></DeleteIcon>
+                  </div>
 
+                </div>
               )
             })
           }
-        </ul>
+
+        </div>
+
+        <h2 onClick={() => { handlershow("interest") }} className={show === "interest" ? "active" : ""} >Interest{show === "interest" ? (<KeyboardArrowUpIcon></KeyboardArrowUpIcon>) : (<KeyboardArrowDownIcon></KeyboardArrowDownIcon>)}</h2>
+        <div className='interest' style={{ display: show === "interest" ? "block" : "none" }} >
+          <input type="text" placeholder='Enter Your Interest' value={interest} onChange={(e) => { setInterest(e.target.value) }} />
+          <button className='save-btn' onClick={(e) => { handlersaveinterest(e) }} >Save</button>
+
+          <ul className='interest-list'>
+            {
+              interestlist.map((list, index) => {
+                return (
+                  <li key={index} >{list}
+                    <div>  <EditIcon onClick={() => { handlerinterestedit(list, index) }} ></EditIcon>
+                      <DeleteIcon onClick={() => { handlerinterestdelete(index) }}></DeleteIcon></div>
+                  </li>
+
+                )
+              })
+            }
+          </ul>
+
+        </div>
 
 
 

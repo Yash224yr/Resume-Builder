@@ -137,8 +137,8 @@
   text-align: start
 }
 
-.homepage .home h1 span{
-  color: #191970 ;
+.homepage .home h1 span {
+  color: #191970;
 }
 
 .homepage .home p {
@@ -449,11 +449,15 @@
 
 .resume {
   display: flex;
+  width: 100%;
+}
+
+.resume .resume-customize{
+  width: 10%;
 }
 
 .resume .resume-edit {
   width: 30%;
-  position: fixed;
   left: 0;
   top: 12;
   height: 90vh;
@@ -464,8 +468,7 @@
 }
 
 .resume .resume-template {
-  width: 70%;
-  margin-left: 30%;
+  width: 60%;
   /* Adjust the margin to match the width of resume-edit */
   background-color: #f4f4f4;
 }
@@ -473,7 +476,7 @@
 .userdetails {
   display: flex;
   justify-content: center;
-  min-height: 100vh;
+  height: auto;
   background-color: #f4f4f4;
   overflow: auto;
   flex-direction: column;
@@ -511,13 +514,18 @@
   transition: 0.5s ease;
 }
 
-.userdetails .skill{
+
+.userdetails .skill,
+.userdetails .about,
+.userdetails .education,
+.userdetails .education,
+.userdetails .experience,
+.userdetails .project,
+.userdetails .info {
   display: none;
 }
 
-.userdetails .about{
-  display: none;
-}
+
 
 .userdetails input[type='submit'] {
   background-color: #9376e0;
@@ -538,44 +546,9 @@
   animation: fade-in 0.5s ease-out forwards;
 }
 
-.userdetails .color-box {
-  display: flex;
-  justify-content: space-evenly;
-  margin-bottom: 1rem;
-}
 
-.userdetails .color {
-  height: 20px;
-  width: 20px;
-  border-radius: 50%;
-  cursor: pointer;
-}
 
-.userdetails .font-box {
-  margin-bottom: 1rem;
-}
 
-.userdetails .font-box h4 {
-  color: black;
-  text-align: center;
-  margin-bottom: 5px;
-}
-
-.userdetails .font-box ul {
-  display: flex;
-  list-style: none;
-  flex-wrap: wrap;
-}
-
-.userdetails .font-box ul li {
-  color: black;
-  margin-left: 20px;
-  cursor: pointer;
-}
-
-.userdetails .font-box ul li:hover {
-  color: blue;
-}
 
 /* Add external CSS file or style tag in HTML file */
 .userdetails .save {
@@ -620,7 +593,8 @@
   /* Hover background color for the second button */
 }
 
-.userdetails .skillset , .userdetails .interest-list{
+.userdetails .skillset,
+.userdetails .interest-list {
   list-style: none;
   margin: 1rem 0;
   display: flex;
@@ -628,7 +602,8 @@
   flex-wrap: wrap;
 }
 
-.userdetails .skillset li , .userdetails .interest-list li{
+.userdetails .skillset li,
+.userdetails .interest-list li {
   color: black;
   width: 30%;
   margin: 10px 5px;
@@ -636,7 +611,17 @@
 
 
 
-.skillset li , .userdetails li {
+.userdetails .active {
+  background-color: #5a8dee;
+  color: white;
+}
+
+
+
+
+
+.skillset li,
+.userdetails li {
   margin-bottom: 10px;
   padding: 8px;
   border: 1px solid #ccc;
@@ -645,22 +630,26 @@
 
 }
 
-.skillset li .edit-icon , .interest-list li .edit-icon {
+.skillset li .edit-icon,
+.interest-list li .edit-icon {
   margin-right: 5px;
   cursor: pointer;
 }
 
-.skillset li .delete-icon , .interest-list li .delete-icon {
+.skillset li .delete-icon,
+.interest-list li .delete-icon {
   margin-left: 5px;
   cursor: pointer;
 }
 
-.skillset li svg:last-of-type ,  .interest-list li svg:last-of-type {
+.skillset li svg:last-of-type,
+.interest-list li svg:last-of-type {
   color: red;
   cursor: pointer;
 }
 
-.skillset li svg:first-of-type , .interest-list li svg:first-of-type {
+.skillset li svg:first-of-type,
+.interest-list li svg:first-of-type {
   cursor: pointer;
 }
 
@@ -758,7 +747,7 @@
   align-items: center;
 }
 
-.template .all-detail .contact p svg{
+.template .all-detail .contact p svg {
   font-size: 1.2rem;
   margin-right: 5px;
   font-weight: bolder;
@@ -797,8 +786,8 @@
 .template .education .education-title h1,
 .template .experience h1,
 .template .skill h1,
-.template .projects h1 ,
-.template .interest h1{
+.template .projects h1,
+.template .interest h1 {
   font-size: 26px;
   font-weight: 700;
   letter-spacing: 1px;
@@ -904,7 +893,7 @@
 .template .template-project h2 {
   font-size: 1rem;
   font-weight: bold;
-  
+
 }
 
 .template .template-project p {
@@ -916,12 +905,12 @@
 }
 
 
-.template .interest{
+.template .interest {
   padding: 0 0.5rem;
   margin-bottom: 1rem;
 }
 
-.template .interest ul{
+.template .interest ul {
   display: flex;
   justify-content: center;
 }
