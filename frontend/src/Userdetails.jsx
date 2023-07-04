@@ -4,6 +4,8 @@ import axios from 'axios';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import LaunchIcon from '@mui/icons-material/Launch';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 
 function Userdetails() {
 
@@ -16,8 +18,8 @@ function Userdetails() {
   const [editproject, seteditproject] = useState(false)
   const [projectindex, setProjectIndex] = useState("")
   const [interest, setInterest] = useState("")
-  const [interestedit , setInterestEdit] = useState(false)
-  const [interestindex , setInterestIndex] = useState("")
+  const [interestedit, setInterestEdit] = useState(false)
+  const [interestindex, setInterestIndex] = useState("")
 
 
 
@@ -56,6 +58,9 @@ function Userdetails() {
     {
       id: 'Lovers Quarrel'
     },
+    {
+      id: 'Roboto Mono'
+    }
   ])
 
 
@@ -124,7 +129,7 @@ function Userdetails() {
           font: font,
           skillist: skillist,
           projectlist: projectlist,
-          interestlist : interestlist,
+          interestlist: interestlist,
         },
         {
           headers: {
@@ -218,9 +223,9 @@ function Userdetails() {
 
   function handlersaveinterest(e) {
     e.preventDefault()
-    if (interest.length > 0 &&  interestedit === false) {
+    if (interest.length > 0 && interestedit === false) {
       setInterestList([...interestlist, interest])
-     setInterest("")
+      setInterest("")
     } else {
 
 
@@ -236,22 +241,22 @@ function Userdetails() {
     }
   }
 
-  function handlerinterestedit(list , index){
+  function handlerinterestedit(list, index) {
     setInterest(list)
     setInterestEdit(!interestedit)
     setInterestIndex(index)
   }
 
 
-  function handlerinterestdelete(index){
+  function handlerinterestdelete(index) {
     setInterestList(
-      interestlist.filter((list , ind)=>{
-          return ind !== index
+      interestlist.filter((list, ind) => {
+        return ind !== index
       })
     )
   }
 
-  
+
 
 
 
@@ -290,6 +295,11 @@ function Userdetails() {
       });
   }
 
+  const [show, setShow] = useState(false)
+
+  function handlershow() {
+    setShow(!show)
+  }
 
 
 
@@ -332,28 +342,34 @@ function Userdetails() {
         <input type="number" placeholder="Enter Your Number" value={number} onChange={(e) => setNumber(e.target.value)} />
         <input type="text" placeholder="Enter Your Location" value={city} onChange={(e) => setCity(e.target.value)} />
 
-        <h2>About</h2>
-        <input type="text" placeholder='Enter about yourself' value={about} onChange={(e) => { setAbout(e.target.value) }} />
+        <h2 onClick={(handlershow)} > About {!show ? (<KeyboardArrowUpIcon></KeyboardArrowUpIcon>) : (<KeyboardArrowDownIcon></KeyboardArrowDownIcon>)}</h2>
+        <div className='about' style={{ display: !show ? "block" : "none" }} >
+          <input type="text" placeholder='Enter about yourself' value={about} onChange={(e) => { setAbout(e.target.value) }} />
+        </div>
 
-        <h2>Skills</h2>
+        <h2 onClick={(handlershow)} >Skills {!show ? (<KeyboardArrowUpIcon></KeyboardArrowUpIcon>) : (<KeyboardArrowDownIcon></KeyboardArrowDownIcon>)}</h2>
+        <div className='skill' style={{ display: !show ? "block" : "none" }}>
 
-        <input type="text" placeholder='Enter about Skills' value={skill} onChange={(e) => { setSkill(e.target.value) }} />
-        <button className='save-btn' onClick={(e) => { handlersave(e) }} >Save</button>
-        <ul className='skillset' >
-          {
 
-            skillist &&
+          <input type="text" placeholder='Enter about Skills' value={skill} onChange={(e) => { setSkill(e.target.value) }} />
+          <button className='save-btn' onClick={(e) => { handlersave(e) }} >Save</button>
+          <ul className='skillset'  >
+            {
 
-            skillist.map((list, index) => {
-              return (
-                <li key={index}>
-                  {list}
-                  <div>  <EditIcon onClick={() => { handlerEdit(list, index) }} ></EditIcon>
-                    <DeleteIcon onClick={() => { handlerdelete(index) }}></DeleteIcon></div>
-                </li>
-              );
-            })}
-        </ul>
+              skillist &&
+
+              skillist.map((list, index) => {
+                return (
+                  <li key={index}>
+                    {list}
+                    <div>  <EditIcon onClick={() => { handlerEdit(list, index) }} ></EditIcon>
+                      <DeleteIcon onClick={() => { handlerdelete(index) }}></DeleteIcon></div>
+                  </li>
+                );
+              })}
+          </ul>
+
+        </div>
 
 
 
