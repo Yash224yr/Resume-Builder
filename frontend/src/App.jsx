@@ -2,10 +2,9 @@ import React, { createContext, useContext, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './Home';
 import Header from './Header';
-import Login from './Login';
-import Register from './Register';
 import Userdetails from './Userdetails';
 import Resume from './Resume';
+import Authentication from './Authentication';
 
 export const ResumeContext = createContext(null);
 
@@ -73,10 +72,9 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
           <Route path='/userdetail' element={<Userdetails/>} ></Route>
           <Route path='/resume' element={<Resume/>}></Route>
+          <Route path='/authentication' element={<Authentication/>}></Route>
         </Routes>
       </BrowserRouter>
     </ResumeContext.Provider>
