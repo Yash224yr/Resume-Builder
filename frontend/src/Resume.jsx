@@ -14,7 +14,7 @@ function Resume() {
 
   return (
     <div className='resume' >
-        <div className='resume-cswitch' >
+        <div className='resume-switch' >
             <Switch/>
         </div>
         <div className='resume-edit' >

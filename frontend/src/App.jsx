@@ -4,7 +4,8 @@ import Home from './Home';
 import Header from './Header';
 import Userdetails from './Userdetails';
 import Resume from './Resume';
-import Authentication from './Authentication';
+import Login from './Login';
+import Register from './Register';
 
 export const ResumeContext = createContext(null);
 
@@ -74,7 +75,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path='/userdetail' element={<Userdetails/>} ></Route>
           <Route path='/resume' element={<Resume/>}></Route>
-          <Route path='/authentication' element={<Authentication/>}></Route>
+          <Route path='/register' element={<Register/>} ></Route>
+          <Route path='/login' element={<Login/>} ></Route>
         </Routes>
       </BrowserRouter>
     </ResumeContext.Provider>

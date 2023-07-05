@@ -20,6 +20,7 @@
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
   color: white;
   padding: 0 2rem;
+  position: sticky;
 }
 
 
@@ -446,6 +447,45 @@
     max-width: 100%;
   }
 }
+
+.customize{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+
+.customize img{
+  height: 60px;
+  width: 60px;
+  cursor: pointer;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.customize .switch{
+  position: relative;
+  margin: 2rem 0;
+}
+
+.customize .switch::before{
+  content: "";
+  position: absolute;
+  top: -10%;
+  left: -9%;
+  height: 150%;
+  width: 150%;
+  background-color: rgba(0, 0, 0, 0.15);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  z-index: -1;
+}
+
+
 
 .resume {
   display: flex;
